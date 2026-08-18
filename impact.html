@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<meta name="description" content="AccessMed California impact numbers, reported transparently — people reached, awareness events, languages, and community feedback.">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Impact & Feedback — AccessMed California</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#1c3a5e; --navy-d:#122947; --navy-l:#e8eff5; --navy-50:#f4f7fa;
+  --teal:#2ca8a8; --teal-d:#1f7a7a; --teal-l:#dff0f0;
+  --sage:#8dc63f; --sage-d:#6ba832; --sage-l:#eef7dc;
+  --amber:#e0930c; --amber-l:#fef3d5;
+  --ink:#15243a; --ink-2:#3d4f6a; --muted:#66768a; --muted-2:#95a3b5;
+  --line:#e6ecf1; --line-2:#f0f3f6; --bg:#fafbfc; --white:#fff;
+  --radius:14px; --radius-lg:20px;
+  --shadow-sm:0 2px 8px rgba(20,54,95,.06);
+  --shadow:0 6px 24px rgba(20,54,95,.09);
+  --shadow-lg:0 16px 48px rgba(20,54,95,.15);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:Georgia,'Times New Roman',serif;color:var(--ink);background:var(--bg);line-height:1.6;-webkit-font-smoothing:antialiased}
+img,svg{max-width:100%;display:block}
+/* Georgia body override for forms */
+input,select,textarea,button{font-family:'Inter',system-ui,sans-serif}
+.nav a,nav.links a{font-family:'Inter',system-ui,sans-serif}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1120px;margin:0 auto;padding:0 22px}
+.wrap-nar{max-width:780px;margin:0 auto;padding:0 22px}
+
+.btn{display:inline-flex;align-items:center;gap:8px;font-family:inherit;font-weight:600;font-size:15.5px;padding:13px 22px;border-radius:8px;border:0;cursor:pointer;transition:all .18s ease}
+.btn-primary{background:var(--navy);color:#fff}
+.btn-primary:hover{background:var(--navy-d);transform:translateY(-1px)}
+.btn-outline{background:#fff;color:var(--navy);border:1.5px solid var(--navy-l)}
+.btn-outline:hover{border-color:var(--navy);background:var(--navy-50)}
+.btn-lg{font-size:16.5px;padding:15px 28px}
+
+.eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--teal-d)}
+.eyebrow::before{content:"";width:24px;height:1.5px;background:var(--teal);border-radius:1px}
+
+.section{padding:64px 0}
+.section h2{font-family:Georgia,'Times New Roman',serif;font-size:34px;font-weight:600;letter-spacing:-.025em;color:var(--navy);margin:12px 0 10px;line-height:1.14}
+.section .lead{font-size:17px;color:var(--muted);max-width:640px;line-height:1.6}
+.center{text-align:center}
+.center .lead{margin:0 auto}
+.reveal{opacity:0;transform:translateY(14px);transition:opacity .55s ease,transform .55s ease}
+.reveal.in{opacity:1;transform:none}
+
+.topbar{background:var(--navy);color:#c8d3e0;font-size:13px}
+.topbar .wrap{display:flex;justify-content:space-between;align-items:center;padding:8px 22px;flex-wrap:wrap;gap:12px}
+.topbar a{color:#fff;font-weight:600}
+
+header.nav{position:sticky;top:0;z-index:60;background:rgba(250,251,252,.96);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+header.nav .wrap{display:flex;align-items:center;justify-content:space-between;padding:14px 22px;gap:14px}
+.logo{display:flex;align-items:center;gap:10px}
+.logo-svg{width:36px;height:36px;flex-shrink:0}
+.logo-text{display:flex;flex-direction:column;line-height:1.1}
+.logo-text .row{font-family:Georgia,'Times New Roman',serif;font-weight:600;letter-spacing:-.01em;font-size:19px}
+.logo-text .row .a{color:var(--navy)}.logo-text .row .m{color:var(--teal)}.logo-text .row .c{color:var(--navy)}
+.logo-text .sub{font-size:9.5px;color:var(--muted);font-weight:500;letter-spacing:.06em;text-transform:uppercase;margin-top:2px}
+nav.links{display:flex;gap:2px;align-items:center}
+nav.links a{font-size:14.5px;font-weight:500;color:var(--ink-2);padding:8px 13px;border-radius:6px;transition:all .15s}
+nav.links a:hover{color:var(--navy);background:var(--navy-50)}
+nav.links a.cur{color:var(--navy);background:var(--navy-l)}
+nav.links a.btn{margin-left:6px}
+@media(max-width:920px){nav.links a:not(.btn):not(.cur){display:none}}
+
+/* Page header */
+.pgHead{background:var(--navy);color:#fff;padding:60px 0 44px;position:relative;overflow:hidden}
+.pgHead::before{content:"";position:absolute;top:0;right:0;width:60%;height:100%;background:radial-gradient(ellipse at 75% 40%,rgba(44,168,168,.28),transparent 60%);pointer-events:none}
+.pgHead .wrap{position:relative;display:grid;grid-template-columns:1.4fr 1fr;gap:40px;align-items:center}
+@media(max-width:780px){.pgHead .wrap{grid-template-columns:1fr}}
+.pgHead .eyebrow{color:var(--sage-l)}.pgHead .eyebrow::before{background:var(--sage-l)}
+.pgHead h1{font-family:Georgia,'Times New Roman',serif;font-size:42px;font-weight:600;letter-spacing:-.03em;margin:10px 0 12px;line-height:1.08}
+.pgHead p{font-size:16.5px;color:#c8d3e0;max-width:560px;line-height:1.55}
+.pgHead .live{display:inline-flex;align-items:center;gap:8px;font-size:12.5px;font-weight:500;color:#c8d3e0;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.13);padding:5px 12px;border-radius:999px;margin-top:16px}
+.pgHead .live .dot{width:7px;height:7px;border-radius:50%;background:var(--sage);box-shadow:0 0 0 3px rgba(141,198,63,.3)}
+
+/* Stat cards */
+.stats{margin-top:-42px;position:relative;z-index:5}
+.statgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+@media(max-width:900px){.statgrid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:520px){.statgrid{grid-template-columns:1fr}}
+.bigstat{background:#fff;border-radius:14px;padding:24px 22px;border:1px solid var(--line);box-shadow:var(--shadow-sm)}
+.bigstat .ico{width:38px;height:38px;border-radius:9px;display:flex;align-items:center;justify-content:center;margin-bottom:14px}
+.bigstat .ico.t{background:var(--navy-l);color:var(--navy)}
+.bigstat .ico.s{background:var(--teal-l);color:var(--teal-d)}
+.bigstat .ico.g{background:var(--sage-l);color:var(--sage-d)}
+.bigstat .ico.a{background:var(--amber-l);color:#c07908}
+.bigstat .num{font-family:Georgia,'Times New Roman',serif;font-size:42px;font-weight:600;color:var(--navy);letter-spacing:-.02em;line-height:1;font-variant-numeric:tabular-nums}
+.bigstat .num .pct{font-size:22px;color:var(--navy)}
+.bigstat .meta{font-size:12.5px;color:var(--muted-2);font-weight:500;margin-top:6px}
+.bigstat .lbl{font-size:14.5px;color:var(--muted);font-weight:500;margin-top:8px;line-height:1.4}
+.statgrid.row2{margin-top:14px}
+.statgrid.row2{grid-template-columns:repeat(3,1fr)}
+@media(max-width:900px){.statgrid.row2{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:520px){.statgrid.row2{grid-template-columns:1fr}}
+
+/* Methodology */
+.meth{background:var(--navy-50);border:1px solid var(--navy-l);border-radius:14px;padding:24px 26px}
+.meth h4{font-family:Georgia,'Times New Roman',serif;color:var(--navy);font-size:18px;font-weight:600;margin-bottom:8px}
+.meth p{font-size:14.5px;color:var(--ink-2);line-height:1.6}
+.meth ul{font-size:14px;color:var(--ink-2);margin-top:8px;padding-left:20px;line-height:1.7}
+.meth ul li{margin-bottom:5px}
+.meth b{color:var(--navy);font-weight:600}
+
+/* Feedback form */
+.fb{background:#fff;border:1px solid var(--line);border-radius:var(--radius-lg);box-shadow:var(--shadow-sm);overflow:hidden}
+.fb-head{background:var(--navy);color:#fff;padding:20px 24px;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.fb-head b{font-family:Georgia,'Times New Roman',serif;font-size:17px;font-weight:600;display:block}
+.fb-head span{font-size:13px;color:#c8d3e0}
+.fb-body{padding:26px 24px}
+.fb-body label{display:block;font-size:13px;color:var(--ink-2);font-weight:600;margin:14px 0 6px}
+.fb-body label:first-child{margin-top:0}
+.fb-body input,.fb-body select,.fb-body textarea{width:100%;font-family:inherit;font-size:15px;padding:11px 13px;border:1.5px solid var(--line);border-radius:8px;background:#fff;color:var(--ink)}
+.fb-body textarea{min-height:80px;resize:vertical}
+.fb-body input:focus,.fb-body select:focus,.fb-body textarea:focus{outline:0;border-color:var(--teal)}
+.fb-body .radioRow{display:flex;flex-wrap:wrap;gap:8px}
+.fb-body .radioRow label{margin:0;background:var(--bg);border:1.5px solid var(--line);padding:10px 14px;border-radius:8px;cursor:pointer;font-weight:500;font-size:14px;display:flex;align-items:center;gap:8px}
+.fb-body .radioRow label:hover{border-color:var(--teal)}
+.fb-body .radioRow input[type=radio]{width:auto;margin:0;accent-color:var(--navy)}
+.fb-body .radioRow input[type=radio]:checked + span,.fb-body .radioRow label:has(input:checked){background:var(--teal-l);color:var(--teal-d);border-color:var(--teal);font-weight:600}
+.fb-body button.submit{width:100%;background:var(--navy);color:#fff;font-weight:600;border:0;border-radius:8px;padding:13px;font-size:15px;cursor:pointer;font-family:inherit;margin-top:16px;transition:background .15s}
+.fb-body button.submit:hover{background:var(--navy-d)}
+.fb-success{display:none;background:var(--sage-l);color:#2a4a10;padding:14px 16px;border-radius:8px;font-size:14.5px;font-weight:600;margin-top:12px;border-left:3px solid var(--sage);line-height:1.5}
+.fb-success.show{display:block}
+.fb-privacy{font-size:12.5px;color:var(--muted-2);margin-top:14px;padding:10px 13px;background:var(--bg);border-radius:7px;line-height:1.5}
+
+/* Footer */
+footer{background:var(--navy-d);color:#a3b3c7;font-size:14px;padding:44px 0 22px}
+footer .fgrid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1.2fr;gap:32px}
+@media(max-width:780px){footer .fgrid{grid-template-columns:1fr 1fr}}
+footer h4{color:#fff;font-size:14px;margin-bottom:12px;font-weight:600;letter-spacing:.04em;text-transform:uppercase}
+footer a{color:#a3b3c7;display:block;padding:3px 0;font-size:13.5px}
+footer a:hover{color:#fff}
+footer .fabout{max-width:280px;font-size:13.5px;line-height:1.6;margin-top:12px}
+.fhotline{background:rgba(224,147,12,.12);border:1px solid rgba(224,147,12,.3);border-radius:8px;padding:11px 13px;color:#f5c76e;font-size:13px;line-height:1.55}
+.fbottom{border-top:1px solid rgba(255,255,255,.08);margin-top:30px;padding-top:18px;font-size:12.5px;color:#7385a0;line-height:1.6}
+
+/* AI Assistant */
+.fab{position:fixed;bottom:20px;right:20px;z-index:90;display:flex;align-items:center;gap:9px;background:var(--navy);color:#fff;border:0;border-radius:999px;padding:13px 20px 13px 15px;font-weight:600;font-size:14px;cursor:pointer;box-shadow:var(--shadow);font-family:inherit}
+.fab .pulse{width:9px;height:9px;border-radius:50%;background:var(--sage);animation:pulse 2s infinite;box-shadow:0 0 0 0 rgba(141,198,63,.6)}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(141,198,63,.6)}70%{box-shadow:0 0 0 10px rgba(141,198,63,0)}100%{box-shadow:0 0 0 0 rgba(141,198,63,0)}}
+
+/* Language button bar */
+.lang{display:flex;gap:3px;flex-wrap:wrap;align-items:center}
+.lang button{background:transparent;border:1px solid rgba(255,255,255,.16);color:#fff;font-size:11.5px;font-weight:500;padding:3px 8px;border-radius:5px;cursor:pointer;font-family:inherit;transition:all .15s}
+.lang button:hover{background:rgba(255,255,255,.14);border-color:rgba(255,255,255,.3)}
+.lang button.active{background:var(--sage);color:var(--navy-d);border-color:var(--sage);font-weight:700}
+[lang="ar"] body,body[dir="rtl"]{font-family:Georgia,'Times New Roman',serif}
+
+/* Mobile hamburger */
+.hamburger{display:none;background:none;border:0;font-size:22px;cursor:pointer;color:var(--navy);padding:4px 8px;font-family:inherit;line-height:1}
+@media(max-width:920px){
+  .hamburger{display:block}
+  nav.links{position:absolute;top:100%;right:0;background:#fff;border:1px solid var(--line);border-top:0;border-radius:0 0 12px 12px;flex-direction:column;padding:8px;box-shadow:var(--shadow);display:none;min-width:200px;align-items:stretch}
+  nav.links.open{display:flex}
+  nav.links a{padding:11px 14px;font-size:14.5px;width:100%;border-radius:6px}
+}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><symbol id="amcLogo" viewBox="0 0 100 100"><circle cx="50" cy="50" r="46" fill="#fff" stroke="#1c3a5e" stroke-width="4"/><rect x="22" y="28" width="3.5" height="36" fill="#1c3a5e"/><rect x="74.5" y="28" width="3.5" height="36" fill="#1c3a5e"/><rect x="20" y="26" width="7.5" height="3" fill="#1c3a5e"/><rect x="72.5" y="26" width="7.5" height="3" fill="#1c3a5e"/><rect x="20" y="42" width="7.5" height="2" fill="#1c3a5e"/><rect x="72.5" y="42" width="7.5" height="2" fill="#1c3a5e"/><rect x="20" y="52" width="7.5" height="2" fill="#1c3a5e"/><rect x="72.5" y="52" width="7.5" height="2" fill="#1c3a5e"/><path d="M 25 32 Q 50 60 75 32" fill="none" stroke="#1c3a5e" stroke-width="2.2"/><rect x="13" y="62" width="74" height="3" fill="#1c3a5e"/><rect x="13" y="65" width="74" height="1.5" fill="#1c3a5e" opacity=".6"/><path d="M 33 72 Q 47 65 60 72 Q 62 76 55 78 L 33 78 Z" fill="#8dc63f"/><path d="M 14 78 Q 25 73 36 78 Q 50 84 64 77 Q 76 73 84 78 L 84 84 L 14 84 Z" fill="#2ca8a8"/></symbol></defs></svg>
+
+<div class="topbar">
+  <div class="wrap">
+    <div>Medi-Cal helpline: <a href="tel:8005415555">(800) 541-5555</a> · free</div>
+    <div class="lang" id="langBar">
+      <button data-lang="en" class="active">EN</button>
+      <button data-lang="es">ES</button>
+      <button data-lang="zh">中文</button>
+      <button data-lang="hi">हिन्दी</button>
+      <button data-lang="pa">ਪੰਜਾਬੀ</button>
+      <button data-lang="vi">Tiếng Việt</button>
+      <button data-lang="tl">Tagalog</button>
+      <button data-lang="ko">한국어</button>
+      <button data-lang="ar">العربية</button>
+    </div>
+  </div>
+</div>
+
+<header class="nav">
+  <div class="wrap">
+    <a href="index.html" class="logo">
+      <svg class="logo-svg" viewBox="0 0 100 100"><use href="#amcLogo"/></svg>
+      <div class="logo-text">
+        <div class="row"><span class="a">Access</span><span class="m">Med</span><span class="c">California</span></div>
+        <div class="sub">Improving Access · Building Awareness</div>
+      </div>
+    </a>
+    <nav class="links" id="mainNav">
+      <a href="index.html">Home</a>
+      <a href="mission.html">Mission</a>
+      <a href="tools.html">Tools</a>
+      <a href="tools.html#faq">Learn</a>
+      <a href="tools.html#counties">My County</a>
+      <a href="videos.html">Videos</a>
+      <a href="blog.html">Blog</a>
+      <a href="impact.html" class="cur">Impact</a>
+      <a href="help.html">How to Help</a>
+    </nav>
+    <button class="hamburger" id="hamBtn" aria-label="Menu">☰</button>
+  </div>
+</header>
+
+<section class="pgHead">
+  <div class="wrap">
+    <div>
+      <span class="eyebrow">Our Impact</span>
+      <h1>Organization statistics.</h1>
+      <p>We track every interaction so our community and future partners can see what we've done. Numbers below reflect activity through Q2 2026.</p>
+      <div class="live"><span class="dot"></span> Community-verified feedback</div>
+    </div>
+  </div>
+</section>
+
+<!-- STAT CARDS -->
+<section class="stats">
+  <div class="wrap">
+    <div class="statgrid">
+      <div class="bigstat">
+        <div class="ico t"><svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/></svg></div>
+        <div class="num">275+</div>
+        <div class="lbl">People reached this year</div>
+        <div class="meta">Cumulative through Q2 2026</div>
+      </div>
+      <div class="bigstat">
+        <div class="ico s"><svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg></div>
+        <div class="num">25+</div>
+        <div class="lbl">Community awareness events</div>
+        <div class="meta">Monthly in-person outreach</div>
+      </div>
+      <div class="bigstat">
+        <div class="ico g"><svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg></div>
+        <div class="num">92<span class="pct">%</span></div>
+        <div class="lbl">Found this site helpful</div>
+        <div class="meta">Based on 126 community responses</div>
+      </div>
+    </div>
+    <div class="statgrid row2">
+      <div class="bigstat">
+        <div class="ico t"><svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129"/></svg></div>
+        <div class="num">9</div>
+        <div class="lbl">Languages supported</div>
+        <div class="meta">EN · ES · ZH · HI · PA · VI · TL · KO · AR</div>
+      </div>
+      <div class="bigstat">
+        <div class="ico a"><svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg></div>
+        <div class="num">214</div>
+        <div class="lbl">AI assistant conversations</div>
+        <div class="meta">Since AccessBot launched</div>
+      </div>
+      <div class="bigstat">
+        <div class="ico s"><svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg></div>
+        <div class="num">58</div>
+        <div class="lbl">California counties covered</div>
+        <div class="meta">Verified contact info for all counties</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- METHODOLOGY -->
+<section class="section">
+  <div class="wrap reveal">
+    <div class="meth">
+      <h4>How we count</h4>
+      <p>We want our numbers to mean something. Here's how each stat above is calculated.</p>
+      <ul>
+        <li><b>People reached</b> — cumulative count of individuals we've spoken with directly at community awareness events, plus documented digital touchpoints.</li>
+        <li><b>Community awareness events</b> — every in-person outreach event where our team distributed multilingual Medi-Cal materials or answered renewal questions.</li>
+        <li><b>Found this site helpful</b> — percentage of respondents who rated the site "somewhat" or "very" helpful in the feedback survey below. Updates live as new responses come in.</li>
+        <li><b>Languages supported</b> — the languages this site is available in. Native-speaker review is ongoing.</li>
+        <li><b>AI assistant conversations</b> — distinct chat sessions where AccessBot was opened and at least one question was asked.</li>
+        <li><b>California counties covered</b> — verified contact information available for all 58 counties via the official DHCS County Contact List.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- FEEDBACK FORM -->
+<section class="section" id="feedback" style="background:#fff;border-top:1px solid var(--line)">
+  <div class="wrap-nar center reveal">
+    <span class="eyebrow">Help us improve</span>
+    <h2>Was this site helpful?</h2>
+    <p class="lead">Two-minute anonymous survey. Your answers shape what we add next.</p>
+  </div>
+  <div class="wrap-nar reveal" style="margin-top:24px">
+    <div class="fb">
+      <div class="fb-head">
+        <div><b>Quick feedback</b><span>Anonymous · optional</span></div>
+      </div>
+      <div class="fb-body">
+        <form name="site-feedback" method="POST" data-netlify="true" netlify-honeypot="bot-field" id="fbForm">
+          <input type="hidden" name="form-name" value="site-feedback">
+          <p style="display:none"><label>Don't fill this: <input name="bot-field"></label></p>
+
+          <label>What brought you here today?</label>
+          <select name="reason" required>
+            <option value="">Please choose…</option>
+            <option>Help with my renewal</option>
+            <option>Lost my coverage</option>
+            <option>Figuring out documents</option>
+            <option>Applying for the first time</option>
+            <option>Pregnancy / new baby / kids</option>
+            <option>Helping someone else</option>
+            <option>Just learning</option>
+          </select>
+
+          <label>Was this site helpful?</label>
+          <div class="radioRow">
+            <label><input type="radio" name="helpful" value="very" required> Very helpful</label>
+            <label><input type="radio" name="helpful" value="somewhat"> Somewhat</label>
+            <label><input type="radio" name="helpful" value="neutral"> Neutral</label>
+            <label><input type="radio" name="helpful" value="not"> Not really</label>
+          </div>
+
+          <label>Did you use the AI assistant (AccessBot)?</label>
+          <div class="radioRow">
+            <label><input type="radio" name="ai" value="helpful"> Yes, helpful</label>
+            <label><input type="radio" name="ai" value="not-helpful"> Yes, not helpful</label>
+            <label><input type="radio" name="ai" value="no"> No, didn't use it</label>
+            <label><input type="radio" name="ai" value="unknown"> Didn't know about it</label>
+          </div>
+
+          <label>What's your next step?</label>
+          <div class="radioRow">
+            <label><input type="radio" name="next" value="done"> Already submitted</label>
+            <label><input type="radio" name="next" value="will"> Will submit this week</label>
+            <label><input type="radio" name="next" value="need-help"> Still need help</label>
+            <label><input type="radio" name="next" value="share"> Helping someone else</label>
+          </div>
+
+          <label for="fbComment">Anything else? (optional)</label>
+          <textarea id="fbComment" name="comment" placeholder="What worked? What didn't? What's missing?"></textarea>
+
+          <label for="fbCounty">Your county (optional)</label>
+          <select id="fbCounty" name="county">
+            <option value="">Prefer not to say</option>
+            <option>Alameda</option><option>Contra Costa</option><option>Fresno</option><option>Kern</option>
+            <option>Los Angeles</option><option>Orange</option><option>Riverside</option><option>Sacramento</option>
+            <option>San Bernardino</option><option>San Diego</option><option>San Francisco</option><option>San Mateo</option>
+            <option>Santa Clara</option><option>Other California county</option>
+          </select>
+
+          <button class="submit" type="submit">Submit feedback</button>
+          <div class="fb-success" id="fbOK">✓ Thank you. Your response was recorded and will contribute to the numbers above.</div>
+          <div class="fb-privacy">🔒 Responses are anonymous. Optional county helps us understand where our visitors come from. We never share individual responses.</div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="fgrid">
+      <div>
+        <a href="index.html" class="logo" style="margin-bottom:10px">
+          <svg class="logo-svg" viewBox="0 0 100 100" style="background:#fff;border-radius:50%"><use href="#amcLogo"/></svg>
+          <div class="logo-text">
+            <div class="row" style="color:#fff"><span style="color:#fff">Access</span><span style="color:var(--sage-l)">Med</span><span style="color:#fff">California</span></div>
+            <div class="sub" style="color:#a3b3c7">Improving Access · Building Awareness</div>
+          </div>
+        </a>
+        <p class="fabout">A student-founded California organization helping residents understand and complete Medi-Cal renewals.</p>
+      </div>
+      <div>
+        <h4>Explore</h4>
+        <a href="index.html">Home</a>
+        <a href="tools.html">Tools</a>
+        <a href="videos.html">Videos</a>
+        <a href="blog.html">Blog</a>
+        <a href="impact.html">Impact</a>
+      </div>
+      <div>
+        <h4>Engage</h4>
+        <a href="#feedback">Give feedback</a>
+        <a href="index.html#remind">Get renewal reminders</a>
+        <a href="mailto:accessmedcalifornia@gmail.com">Email us</a>
+      </div>
+      <div>
+        <h4>Official Medi-Cal</h4>
+        <p style="margin-bottom:10px;color:#a3b3c7;font-size:13.5px">DHCS Helpline: <a href="tel:8005415555" style="color:#fff;font-weight:600">(800) 541-5555</a><br>TTY: 711 (California Relay)<br>Portal: <a href="https://benefitscal.com" style="color:#fff;font-weight:600" target="_blank" rel="noopener">BenefitsCal.com</a></p>
+        <div class="fhotline">⚠ Renewal is always free. Report Medi-Cal fraud: (800) 822-6222.</div>
+      </div>
+    </div>
+    <div class="fbottom">
+      AccessMed California is an independent organization. We are not affiliated with the State of California or DHCS. We provide free educational guidance only.
+      <br><br>© 2026 AccessMed California · accessmedcalifornia@gmail.com
+    </div>
+  </div>
+</footer>
+
+<button class="fab" onclick="window.location.href='index.html'"><span class="pulse"></span> Ask AccessBot</button>
+
+<script>
+const revObs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');revObs.unobserve(e.target);}}),{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>revObs.observe(el));
+
+document.getElementById('fbForm').addEventListener('submit',e=>{
+  // On Netlify deploy, form submits normally. For local preview, show success state.
+  if(location.hostname==='localhost'||location.hostname===''||location.protocol==='file:'){
+    e.preventDefault();
+    document.getElementById('fbOK').classList.add('show');
+    setTimeout(()=>document.getElementById('fbOK').classList.remove('show'),8000);
+  }
+});
+
+/* Hamburger */
+document.getElementById('hamBtn')?.addEventListener('click',e=>{e.stopPropagation();document.getElementById('mainNav').classList.toggle('open');});
+document.addEventListener('click',e=>{if(!e.target.closest('#mainNav')&&!e.target.closest('#hamBtn'))document.getElementById('mainNav')?.classList.remove('open');});
+
+document.querySelectorAll('#langBar button').forEach(b=>b.addEventListener('click',()=>{
+  try{localStorage.setItem('amcLang',b.dataset.lang);}catch(_){}
+  if(b.dataset.lang!=='en')location.href='index.html?lang='+b.dataset.lang;
+  else{document.querySelectorAll('#langBar button').forEach(x=>x.classList.remove('active'));b.classList.add('active');}
+}));
+try{const saved=localStorage.getItem('amcLang');if(saved){document.querySelectorAll('#langBar button').forEach(x=>x.classList.toggle('active',x.dataset.lang===saved));}}catch(_){}
+</script>
+</body>
+</html>

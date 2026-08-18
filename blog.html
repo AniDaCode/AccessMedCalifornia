@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<meta name="description" content="Plain-language guides for California health coverage. 10 fact-checked articles drawn from official DHCS and Covered California sources.">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Blog — AccessMed California</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Source+Serif+4:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#1c3a5e; --navy-dark:#122947; --navy-light:#dbe5f0; --navy-50:#f0f5fa;
+  --teal:#2ca8a8; --teal-dark:#1f7a7a; --teal-light:#ccecec; --teal-50:#e5f4f4;
+  --sage:#8dc63f; --sage-dark:#6ba832; --sage-light:#e3f4cf; --sage-50:#f3faea;
+  --amber:#f59e0b; --amber-light:#fef3c7;
+  --rose:#e11d48; --rose-light:#ffe4e6;
+  --ink:#14365f; --ink-2:#2d4a6e; --muted:#5b7595; --muted-2:#8aa3bd;
+  --line:#dde8f0; --line-2:#eaf0f5; --bg:#f7fafd; --white:#fff;
+  --green:#16a34a; --green-light:#dcfce7;
+  --radius:18px; --shadow:0 6px 24px rgba(20,54,95,.08); --shadow-md:0 10px 30px rgba(20,54,95,.13);
+  --shadow-lg:0 20px 56px rgba(20,54,95,.20);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:Georgia,'Times New Roman',serif;color:var(--ink);background:var(--bg);line-height:1.6;-webkit-font-smoothing:antialiased}
+img,svg{max-width:100%;display:block}
+/* Georgia body override for forms */
+input,select,textarea,button{font-family:'Inter',system-ui,sans-serif}
+.nav a,nav.links a{font-family:'Inter',system-ui,sans-serif}
+a{color:inherit}
+.wrap{max-width:1180px;margin:0 auto;padding:0 22px}
+
+.btn{display:inline-flex;align-items:center;gap:8px;font-weight:600;font-size:16px;padding:14px 24px;border-radius:999px;border:0;cursor:pointer;text-decoration:none;transition:transform .15s,box-shadow .15s,background .15s;font-family:inherit}
+.btn:hover{transform:translateY(-2px)}
+.btn-primary{background:var(--amber);color:#3a2a00;box-shadow:0 6px 18px rgba(245,158,11,.4)}
+.btn-primary:hover{background:#fbbf24}
+.btn-navy{background:var(--navy);color:#fff;box-shadow:0 6px 18px rgba(28,58,94,.35)}
+.btn-navy:hover{background:var(--navy-dark)}
+.btn-teal{background:var(--teal);color:#fff;box-shadow:0 6px 18px rgba(44,168,168,.35)}
+.btn-teal:hover{background:var(--teal-dark)}
+.btn-ghost{background:rgba(255,255,255,.12);color:#fff;border:1.5px solid rgba(255,255,255,.45)}
+.btn-outline{background:#fff;color:var(--navy);border:1.5px solid var(--navy)}
+.btn-outline:hover{background:var(--navy-light)}
+.btn-lg{font-size:18px;padding:17px 32px}
+
+.eyebrow{display:inline-flex;align-items:center;gap:7px;font-size:12.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--teal-dark);background:var(--teal-light);padding:7px 14px;border-radius:999px}
+.eyebrow .dotx{width:6px;height:6px;border-radius:50%;background:var(--teal-dark);box-shadow:0 0 0 3px rgba(44,168,168,.22)}
+
+.section{padding:70px 0;position:relative}
+.section h2{font-family:'Source Serif 4',Georgia,serif;font-size:36px;font-weight:700;letter-spacing:-.025em;color:var(--navy);margin:14px 0 12px;line-height:1.12}
+.section h2 .accent{color:var(--teal);font-style:italic}
+.section .lead{font-size:18px;color:var(--muted);max-width:680px;line-height:1.6}
+.center{text-align:center}
+.center .lead{margin:0 auto}
+
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .7s,transform .7s}
+.reveal.in{opacity:1;transform:none}
+.reveal.d2{transition-delay:.06s}.reveal.d3{transition-delay:.12s}.reveal.d4{transition-delay:.18s}
+
+/* ===== Top bar ===== */
+.topbar{background:var(--navy);color:#cdd9e5;font-size:13.5px}
+.topbar .wrap{display:flex;justify-content:space-between;align-items:center;gap:14px;padding:9px 22px;flex-wrap:wrap}
+.topbar a{color:#fff;font-weight:600;text-decoration:none}
+
+/* ===== Logo SVG ===== */
+.logo-svg{width:44px;height:44px;flex-shrink:0}
+.logo-text{display:flex;flex-direction:column;line-height:1.1}
+.logo-text .lt-row{font-family:'Source Serif 4',Georgia,serif;font-weight:700;letter-spacing:-.01em;font-size:20px}
+.logo-text .lt-row .a{color:var(--navy)} .logo-text .lt-row .m{color:var(--teal)} .logo-text .lt-row .c{color:var(--navy)}
+.logo-text .lt-sub{font-size:9.5px;color:var(--muted);font-weight:600;letter-spacing:.04em;text-transform:uppercase;margin-top:1px}
+.logo{display:flex;align-items:center;gap:11px;text-decoration:none}
+.logo-svg-only{width:38px;height:38px}
+
+/* ===== Nav ===== */
+header.nav{position:sticky;top:0;z-index:60;background:rgba(247,250,253,.94);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+header.nav .wrap{display:flex;align-items:center;justify-content:space-between;padding:13px 22px;gap:14px}
+nav.links{display:flex;gap:4px;align-items:center}
+nav.links a{font-size:14.5px;font-weight:600;color:var(--ink);text-decoration:none;padding:9px 13px;border-radius:9px;transition:background .15s,color .15s}
+nav.links a:hover{background:var(--teal-50);color:var(--teal-dark)}
+nav.links a.cur{color:var(--teal-dark);background:var(--teal-light)}
+@media(max-width:920px){nav.links a:not(.btn){display:none}}
+
+/* ===== Hero ===== */
+.hero{position:relative;background:linear-gradient(155deg,#14365f 0%,#1c3a5e 50%,#2ca8a8 100%);color:#fff;overflow:hidden;padding:70px 0 84px}
+.hero::before{content:"";position:absolute;inset:0;background:
+  radial-gradient(circle at 88% 18%,rgba(141,198,63,.25),transparent 45%),
+  radial-gradient(circle at 8% 82%,rgba(44,168,168,.30),transparent 45%);pointer-events:none}
+.hero .wrap{position:relative}
+.hero h1{font-family:'Source Serif 4',Georgia,serif;font-size:50px;line-height:1.05;font-weight:700;letter-spacing:-.03em;margin:18px 0 16px;max-width:780px}
+.hero h1 .hl{color:#a5e0a5;font-style:italic}
+.hero p.sub{font-size:19px;color:#cce0e9;max-width:680px;line-height:1.6}
+
+/* ===== Filter bar ===== */
+.filters{margin-top:32px;display:flex;gap:8px;flex-wrap:wrap;justify-content:center}
+.filters button{background:#fff;border:1.5px solid var(--line);color:var(--ink-2);font-weight:600;font-size:13.5px;padding:9px 16px;border-radius:999px;cursor:pointer;font-family:inherit;transition:all .15s}
+.filters button:hover{border-color:var(--teal)}
+.filters button.active{background:var(--navy);color:#fff;border-color:var(--navy)}
+
+/* ===== Featured ===== */
+.featured{background:#fff;border:1px solid var(--line);border-radius:24px;box-shadow:var(--shadow-md);overflow:hidden;display:grid;grid-template-columns:1.1fr 1fr;cursor:pointer;transition:transform .22s,box-shadow .22s}
+.featured:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg)}
+@media(max-width:880px){.featured{grid-template-columns:1fr}}
+.featured-img{position:relative;background:linear-gradient(155deg,var(--navy),var(--teal));min-height:300px;display:flex;align-items:center;justify-content:center;color:#fff}
+.featured-img::after{content:"";position:absolute;inset:0;background:radial-gradient(circle at 70% 30%,rgba(141,198,63,.25),transparent 60%)}
+.featured-img .feat-art{position:relative;z-index:2;font-family:'Source Serif 4',serif;font-size:120px;line-height:1;opacity:.18;color:#fff}
+.featured-img .feat-label{position:absolute;top:24px;left:24px;background:var(--amber);color:#3a2a00;font-size:11.5px;font-weight:800;padding:6px 12px;border-radius:7px;letter-spacing:.08em;text-transform:uppercase;z-index:3}
+.featured-body{padding:34px}
+.featured-body .ftag{font-size:11.5px;font-weight:800;color:var(--teal-dark);background:var(--teal-light);padding:5px 11px;border-radius:7px;letter-spacing:.06em;text-transform:uppercase;display:inline-block}
+.featured-body h3{font-family:'Source Serif 4',serif;font-size:28px;color:var(--navy);font-weight:700;line-height:1.2;margin:14px 0 12px;letter-spacing:-.02em}
+.featured-body p{color:var(--muted);font-size:15.5px;line-height:1.65;margin-bottom:18px}
+.featured-body .fmeta{font-size:13px;color:var(--muted-2);display:flex;gap:14px;align-items:center}
+.featured-body .fmeta b{color:var(--teal-dark);font-weight:700}
+
+/* ===== Post grid ===== */
+.postgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:24px}
+@media(max-width:920px){.postgrid{grid-template-columns:1fr 1fr}}
+@media(max-width:560px){.postgrid{grid-template-columns:1fr}}
+.post{background:#fff;border:1px solid var(--line);border-radius:18px;overflow:hidden;cursor:pointer;transition:transform .2s,box-shadow .2s,border-color .2s;display:flex;flex-direction:column;text-align:left}
+.post:hover{transform:translateY(-5px);box-shadow:var(--shadow-md);border-color:var(--teal-light)}
+.post-img{aspect-ratio:5/3;display:flex;align-items:center;justify-content:center;color:#fff;font-family:'Source Serif 4',serif;font-size:64px;font-weight:700;line-height:1;position:relative;overflow:hidden}
+.post-img::after{content:"";position:absolute;inset:0;background:radial-gradient(circle at 70% 30%,rgba(255,255,255,.16),transparent 60%)}
+.post-img span{position:relative;z-index:2;opacity:.22}
+.post-img.c1{background:linear-gradient(135deg,var(--navy),var(--teal))}
+.post-img.c2{background:linear-gradient(135deg,var(--teal),var(--sage))}
+.post-img.c3{background:linear-gradient(135deg,var(--navy),var(--navy-dark))}
+.post-img.c4{background:linear-gradient(135deg,var(--sage-dark),var(--teal-dark))}
+.post-img.c5{background:linear-gradient(135deg,var(--teal-dark),var(--navy))}
+.post-img.c6{background:linear-gradient(135deg,var(--navy),var(--sage-dark))}
+.post-tag{position:absolute;top:12px;left:12px;background:rgba(255,255,255,.95);color:var(--navy);font-size:10.5px;font-weight:800;padding:4px 9px;border-radius:6px;letter-spacing:.06em;text-transform:uppercase;z-index:3}
+.post-body{padding:20px 22px 22px;display:flex;flex-direction:column;flex:1}
+.post-body h4{font-family:'Source Serif 4',serif;font-size:18.5px;color:var(--navy);font-weight:700;line-height:1.25;letter-spacing:-.01em;margin-bottom:8px}
+.post-body p{color:var(--muted);font-size:14.5px;line-height:1.55;flex:1;margin-bottom:14px}
+.post-meta{display:flex;justify-content:space-between;align-items:center;font-size:12.5px;color:var(--muted-2);font-weight:600;border-top:1px solid var(--line-2);padding-top:13px}
+.post-meta .read{color:var(--teal-dark)}
+.post-meta .arrow{color:var(--teal);font-weight:700;font-size:14px}
+
+/* ===== Modal viewer ===== */
+.modal-bg{position:fixed;inset:0;background:rgba(20,54,95,.75);backdrop-filter:blur(8px);z-index:100;display:none;align-items:flex-start;justify-content:center;padding:32px 22px;overflow-y:auto}
+.modal-bg.show{display:flex;animation:fadeIn .25s ease}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+.modal{background:#fff;border-radius:22px;max-width:780px;width:100%;box-shadow:var(--shadow-lg);overflow:hidden;animation:slideUp .35s ease;position:relative;margin:auto 0}
+@keyframes slideUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:none}}
+.modal-head{background:linear-gradient(135deg,var(--navy),var(--teal));color:#fff;padding:30px 36px 32px;position:relative}
+.modal-head .mtag{font-size:11.5px;font-weight:800;color:#fff;background:rgba(255,255,255,.18);padding:5px 11px;border-radius:7px;letter-spacing:.06em;text-transform:uppercase;display:inline-block}
+.modal-head h2{font-family:'Source Serif 4',serif;font-size:30px;color:#fff;font-weight:700;line-height:1.18;letter-spacing:-.02em;margin:14px 0 10px;max-width:90%}
+.modal-head .mmeta{display:flex;gap:18px;font-size:13px;color:#cce0e9;align-items:center;flex-wrap:wrap}
+.modal-head .mmeta span{display:inline-flex;align-items:center;gap:5px}
+.modal-close{position:absolute;top:18px;right:18px;width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,.18);color:#fff;border:0;cursor:pointer;font-size:18px;font-family:inherit;display:flex;align-items:center;justify-content:center}
+.modal-close:hover{background:rgba(255,255,255,.3)}
+.modal-body{padding:32px 36px 28px;max-height:calc(100vh - 280px);overflow-y:auto}
+.modal-body p{font-size:16px;color:var(--ink-2);line-height:1.75;margin-bottom:18px}
+.modal-body p:first-of-type::first-letter{font-family:'Source Serif 4',serif;font-size:54px;line-height:1;float:left;color:var(--teal);font-weight:700;padding:6px 11px 0 0;margin-top:2px}
+.modal-body .sources{margin-top:24px;padding:18px 22px;background:var(--navy-50);border-left:3px solid var(--teal);border-radius:8px;font-size:13.5px;color:var(--muted);line-height:1.6}
+.modal-body .sources b{color:var(--navy);font-weight:700}
+.modal-foot{padding:20px 36px;border-top:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;gap:12px;background:var(--bg);flex-wrap:wrap}
+.modal-foot .nav-prev,.modal-foot .nav-next{background:#fff;border:1.5px solid var(--line);color:var(--ink-2);font-weight:600;font-size:13.5px;padding:9px 15px;border-radius:9px;cursor:pointer;font-family:inherit;display:flex;align-items:center;gap:6px;max-width:240px}
+.modal-foot .nav-prev:hover,.modal-foot .nav-next:hover{border-color:var(--teal);color:var(--teal-dark)}
+.modal-foot .nav-prev span,.modal-foot .nav-next span{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;display:block;font-weight:600;margin-bottom:1px}
+.modal-foot .nav-prev b,.modal-foot .nav-next b{display:block;font-size:13.5px;color:var(--ink);font-weight:700;text-align:left;line-height:1.25;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:170px}
+.modal-foot .nav-prev{text-align:left}
+.modal-foot .nav-next{text-align:right}
+.modal-actions{display:flex;gap:8px;flex-wrap:wrap}
+.mact{background:#fff;border:1.5px solid var(--line);color:var(--ink-2);font-weight:600;font-size:13px;padding:8px 12px;border-radius:8px;cursor:pointer;font-family:inherit}
+.mact:hover{border-color:var(--teal);color:var(--teal-dark)}
+
+/* ===== CTA ===== */
+.cta-band{background:linear-gradient(135deg,var(--navy),var(--teal));color:#fff;border-radius:24px;padding:50px 40px;text-align:center}
+.cta-band h2{color:#fff;font-size:30px}
+.cta-band p{color:#cce0e9;max-width:560px;margin:8px auto 22px}
+
+/* ===== Footer ===== */
+footer{background:var(--navy);color:#a8becf;font-size:14.5px;padding:50px 0 26px}
+footer .fgrid{display:grid;grid-template-columns:1.6fr 1fr 1fr 1.3fr;gap:32px}
+@media(max-width:880px){footer .fgrid{grid-template-columns:1fr 1fr}}
+footer h4{color:#fff;font-size:15px;margin-bottom:12px}
+footer a{color:#a8becf;text-decoration:none;display:block;padding:4px 0;font-size:14px}
+footer a:hover{color:#fff}
+.fhot{background:rgba(245,158,11,.13);border:1px solid rgba(245,158,11,.35);border-radius:11px;padding:13px 15px;color:#fde68a;font-size:13.5px;line-height:1.5}
+.fbottom{border-top:1px solid rgba(255,255,255,.08);margin-top:34px;padding-top:18px;font-size:13px;color:#7895ae;line-height:1.6}
+
+/* ===== AI Chat (mini) ===== */
+.fab{position:fixed;bottom:22px;right:22px;z-index:90;display:flex;align-items:center;gap:10px;background:var(--teal);color:#fff;border:0;border-radius:999px;padding:14px 22px 14px 16px;font-weight:700;font-size:15px;cursor:pointer;box-shadow:var(--shadow-lg);font-family:inherit}
+.fab:hover{background:var(--teal-dark)}
+.fab .pulse{width:11px;height:11px;border-radius:50%;background:#a5e0a5;box-shadow:0 0 0 0 rgba(165,224,165,.7);animation:pulse 2s infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(165,224,165,.7)}70%{box-shadow:0 0 0 12px rgba(165,224,165,0)}100%{box-shadow:0 0 0 0 rgba(165,224,165,0)}}
+
+.demo-note{background:var(--navy);color:#cdd9e5;font-size:12.5px;text-align:center;padding:8px 14px}
+.demo-note b{color:#a5e0a5}
+
+/* Language button bar */
+.lang{display:flex;gap:3px;flex-wrap:wrap;align-items:center}
+.lang button{background:transparent;border:1px solid rgba(255,255,255,.16);color:#fff;font-size:11.5px;font-weight:500;padding:3px 8px;border-radius:5px;cursor:pointer;font-family:inherit;transition:all .15s}
+.lang button:hover{background:rgba(255,255,255,.14);border-color:rgba(255,255,255,.3)}
+.lang button.active{background:var(--sage);color:var(--navy-d);border-color:var(--sage);font-weight:700}
+[lang="ar"] body,body[dir="rtl"]{font-family:Georgia,'Times New Roman',serif}
+
+/* Mobile hamburger */
+.hamburger{display:none;background:none;border:0;font-size:22px;cursor:pointer;color:var(--navy);padding:4px 8px;font-family:inherit;line-height:1}
+@media(max-width:920px){
+  .hamburger{display:block}
+  nav.links{position:absolute;top:100%;right:0;background:#fff;border:1px solid var(--line);border-top:0;border-radius:0 0 12px 12px;flex-direction:column;padding:8px;box-shadow:var(--shadow);display:none;min-width:200px;align-items:stretch}
+  nav.links.open{display:flex}
+  nav.links a{padding:11px 14px;font-size:14.5px;width:100%;border-radius:6px}
+}
+</style>
+</head>
+<body>
+
+
+<!-- TOP BAR -->
+<div class="topbar">
+  <div class="wrap">
+    <div>Medi-Cal helpline: <a href="tel:8005415555">(800) 541-5555</a> · free</div>
+    <div class="lang" id="langBar">
+      <button data-lang="en" class="active">EN</button>
+      <button data-lang="es">ES</button>
+      <button data-lang="zh">中文</button>
+      <button data-lang="hi">हिन्दी</button>
+      <button data-lang="pa">ਪੰਜਾਬੀ</button>
+      <button data-lang="vi">Tiếng Việt</button>
+      <button data-lang="tl">Tagalog</button>
+      <button data-lang="ko">한국어</button>
+      <button data-lang="ar">العربية</button>
+    </div>
+  </div>
+</div>
+
+<!-- LOGO SVG TEMPLATE (referenced by use elsewhere too) -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="amcLogo" viewBox="0 0 100 100">
+      <circle cx="50" cy="50" r="46" fill="#fff" stroke="#1c3a5e" stroke-width="4"/>
+      <!-- bridge towers -->
+      <rect x="22" y="28" width="3.5" height="36" fill="#1c3a5e"/>
+      <rect x="74.5" y="28" width="3.5" height="36" fill="#1c3a5e"/>
+      <!-- tower tops -->
+      <rect x="20" y="26" width="7.5" height="3" fill="#1c3a5e"/>
+      <rect x="72.5" y="26" width="7.5" height="3" fill="#1c3a5e"/>
+      <!-- horizontal cross-bars on each tower -->
+      <rect x="20" y="42" width="7.5" height="2" fill="#1c3a5e"/>
+      <rect x="72.5" y="42" width="7.5" height="2" fill="#1c3a5e"/>
+      <rect x="20" y="52" width="7.5" height="2" fill="#1c3a5e"/>
+      <rect x="72.5" y="52" width="7.5" height="2" fill="#1c3a5e"/>
+      <!-- suspension cable arc -->
+      <path d="M 25 32 Q 50 60 75 32" fill="none" stroke="#1c3a5e" stroke-width="2.2"/>
+      <!-- bridge deck -->
+      <rect x="13" y="62" width="74" height="3" fill="#1c3a5e"/>
+      <rect x="13" y="65" width="74" height="1.5" fill="#1c3a5e" opacity=".6"/>
+      <!-- green hill -->
+      <path d="M 33 72 Q 47 65 60 72 Q 62 76 55 78 L 33 78 Z" fill="#8dc63f"/>
+      <!-- water/river curve -->
+      <path d="M 14 78 Q 25 73 36 78 Q 50 84 64 77 Q 76 73 84 78 L 84 84 L 14 84 Z" fill="#2ca8a8"/>
+    </symbol>
+  </defs>
+</svg>
+
+<!-- NAV -->
+<header class="nav">
+  <div class="wrap">
+    <a href="index.html" class="logo">
+      <svg class="logo-svg-only"><use href="#amcLogo"/></svg>
+      <div class="logo-text">
+        <div class="lt-row"><span class="a">Access</span><span class="m">Med</span><span class="c">California</span></div>
+        <div class="lt-sub">Improving Access · Building Awareness</div>
+      </div>
+    </a>
+    <nav class="links" id="mainNav">
+      <a href="index.html">Home</a>
+      <a href="mission.html">Mission</a>
+      <a href="tools.html">Tools</a>
+      <a href="tools.html#faq">Learn</a>
+      <a href="tools.html#counties">My County</a>
+      <a href="videos.html">Videos</a>
+      <a href="blog.html" class="cur">Blog</a>
+      <a href="impact.html">Impact</a>
+      <a href="help.html">How to Help</a>
+    </nav>
+    <button class="hamburger" id="hamBtn" aria-label="Menu">☰</button>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="wrap">
+    <span class="eyebrow" style="background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);color:#a5e0a5"><span class="dotx" style="background:#a5e0a5;box-shadow:0 0 0 3px rgba(165,224,165,.25)"></span> The AccessMed Blog</span>
+    <h1>Plain-language guides for <span class="hl">California health coverage.</span></h1>
+    <p class="sub">10 fact-checked articles drawn from official DHCS and Covered California sources. Bookmark this page — we'll keep adding to it as policy changes.</p>
+    <div class="filters" id="filters">
+      <button class="active" data-cat="all">All articles</button>
+      <button data-cat="renewal">Renewal</button>
+      <button data-cat="lost">Lost coverage</button>
+      <button data-cat="eligibility">Eligibility</button>
+      <button data-cat="plans">Plans &amp; providers</button>
+      <button data-cat="benefits">Benefits</button>
+      <button data-cat="immigration">Immigration &amp; 2026</button>
+      <button data-cat="medicare">Medicare</button>
+      <button data-cat="family">Family resources</button>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURED ARTICLE -->
+<section class="section" style="padding-top:50px">
+  <div class="wrap reveal">
+    <div class="featured" data-id="1">
+      <div class="featured-img">
+        <span class="feat-label">Featured</span>
+        <div class="feat-art">01</div>
+      </div>
+      <div class="featured-body">
+        <span class="ftag">Renewal Basics</span>
+        <h3>How to Keep Your Medi-Cal Coverage: A Simple Renewal Guide</h3>
+        <p>Medi-Cal renewal can feel intimidating, especially when a letter arrives with forms, deadlines, and requests for documents. But the basic idea is simple — every year your county checks whether you still qualify.</p>
+        <div class="fmeta">
+          <span>📖 <b>6 min read</b></span>
+          <span>🗓️ Jun 2026</span>
+          <span style="color:var(--teal-dark);font-weight:700">Read article →</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- POST GRID -->
+<section class="section" style="padding-top:0">
+  <div class="wrap reveal">
+    <div style="display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:14px;margin-bottom:8px">
+      <h2 style="margin-bottom:0">All <span class="accent">articles.</span></h2>
+      <div style="font-size:14px;color:var(--muted)" id="countLbl">9 more articles</div>
+    </div>
+    <div class="postgrid" id="postgrid"></div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="section">
+  <div class="wrap reveal">
+    <div class="cta-band">
+      <h2>Want these guides in your inbox?</h2>
+      <p>One short email a month with new articles and timely Medi-Cal reminders. No spam, ever.</p>
+      <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap">
+        <a href="index.html#remind" class="btn btn-primary btn-lg">Subscribe →</a>
+        <a href="index.html" class="btn btn-ghost btn-lg">Back to home</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MODAL -->
+<div class="modal-bg" id="modalBg">
+  <div class="modal" id="modal">
+    <button class="modal-close" id="modalClose">✕</button>
+    <div class="modal-head" id="modalHead"></div>
+    <div class="modal-body" id="modalBody"></div>
+    <div class="modal-foot">
+      <button class="nav-prev" id="navPrev"></button>
+      <div class="modal-actions">
+        <button class="mact" onclick="window.print()">🖨️ Print</button>
+        <button class="mact" id="copyLink">🔗 Copy link</button>
+      </div>
+      <button class="nav-next" id="navNext"></button>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="fgrid">
+      <div>
+        <a href="index.html" class="logo" style="margin-bottom:12px">
+          <svg class="logo-svg-only" style="background:#fff;border-radius:50%"><use href="#amcLogo"/></svg>
+          <div class="logo-text">
+            <div class="lt-row" style="color:#fff"><span style="color:#fff">Access</span><span style="color:#a5e0a5">Med</span><span style="color:#fff">California</span></div>
+            <div class="lt-sub" style="color:#a8becf">Improving Access · Building Awareness</div>
+          </div>
+        </a>
+        <p style="max-width:300px;color:#a8becf;font-size:14px;line-height:1.6;margin-top:14px">A student-founded organization helping Californians keep their Medi-Cal coverage through clear guidance and community partnerships.</p>
+      </div>
+      <div>
+        <h4>Explore</h4>
+        <a href="index.html">Home</a>
+        <a href="tools.html#checker">Tools</a>
+        <a href="tools.html#faq">Learn</a>
+        <a href="blog.html">Blog</a>
+        <a href="impact.html">Impact</a>
+      </div>
+      <div>
+        <h4>Engage</h4>
+        <a href="tools.html#partners">Become a partner</a>
+        <a href="mailto:accessmedcalifornia@gmail.com">Volunteer</a>
+        <a href="impact.html#feedback">Give feedback</a>
+        <a href="mailto:accessmedcalifornia@gmail.com">Share your story</a>
+      </div>
+      <div>
+        <h4>Official help lines</h4>
+        <p style="margin-bottom:10px">DHCS Helpline: (800) 541-5555<br>TTY: 711</p>
+        <div class="fhot">⚠️ Renewal is always free. Report scams to (800) 822-6222.</div>
+      </div>
+    </div>
+    <div class="fbottom">
+      AccessMed California is an independent organization. We are not affiliated with the State of California or DHCS. We provide guidance only.
+      <br><br>© 2026 AccessMed California · accessmedcalifornia@gmail.com
+    </div>
+  </div>
+</footer>
+
+<button class="fab" onclick="window.location.href='index.html'"><span class="pulse"></span> Ask AccessBot</button>
+
+<script>
+const POSTS=[
+{id:1,cat:'renewal',catLbl:'Renewal Basics',c:'c1',num:'01',title:'How to Keep Your Medi-Cal Coverage: A Simple Renewal Guide',meta:'Renewal can feel intimidating — but the basic idea is simple. Here\'s how to protect your coverage from start to finish.',read:'6 min',
+body:[
+"Medi-Cal renewal can feel intimidating, especially when a letter arrives with forms, deadlines, and requests for documents. But the basic idea is simple: every year, your county checks whether you still qualify for Medi-Cal. Sometimes the county already has enough information to renew you automatically. Other times, the county needs you to send back a renewal form. Knowing the difference can help prevent an avoidable gap in coverage.",
+"The first thing to know is that not every Medi-Cal member receives a form. If the county can verify your eligibility using the information it already has, you may receive a notice saying your Medi-Cal will continue and that you do not need to do anything. That notice is still important. Keep it with your records, because it confirms that your coverage has been renewed.",
+"If the county needs more information, it will send a renewal packet. DHCS explains that renewal forms are sent in a bright yellow envelope. If you receive one, do not ignore it. The form must be completed and returned by the due date listed on the notice. Missing the deadline can cause your Medi-Cal to end, even if you still qualify.",
+"A good renewal strategy starts before the form arrives. Make sure your county has your current mailing address, phone number, and email address. If your address is outdated, renewal mail can go to the wrong place, and you may not learn there is a problem until your coverage has already stopped. DHCS tells members to report changes such as address, income, household size, pregnancy, marriage, or separation within 10 days.",
+"When completing the renewal, read each question carefully. Do not guess if a question asks for income, household members, or changes in employment. Use recent pay stubs, benefit letters, tax information, or other documents that match what the form asks for. If something has changed, write it clearly. If a question does not apply, answer it as instructed rather than leaving large sections blank. Incomplete forms can delay processing.",
+"You can renew through BenefitsCal, by mail, or through your county office. Renewing online can be helpful because you may be able to upload documents and track your case. Mailing the form can still work, but it is best to keep a copy and note the date you sent it. If you turn documents in person, ask for a receipt or confirmation when possible.",
+"If your Medi-Cal ends because information was missing, act quickly. DHCS materials explain that members may be able to provide missing information within 90 days and have coverage reinstated if they still qualify. The key is not to wait. Contact the county as soon as you receive a notice saying your coverage has ended or may end.",
+"For families, a renewal is also a good time to check whether everyone in the household is listed correctly. Children, pregnant family members, and adults may qualify under different rules. A change that affects one person may not affect everyone in the same way. If one family member loses eligibility, another may still qualify for Medi-Cal or another coverage option.",
+"The most important message is this: open every letter from Medi-Cal or your county. Many coverage losses happen not because someone is ineligible, but because a form was missed, a document was not returned, or the county had outdated contact information. A few small steps — updating your address, watching for the yellow envelope, returning forms on time, and keeping proof of submission — can protect your access to care."
+],sources:"DHCS, Keep Your Medi-Cal; DHCS, Renewal Form; DHCS, FAQs; Covered California, Steps to Renew."},
+
+{id:2,cat:'lost',catLbl:'Lost Coverage',c:'c2',num:'02',title:'What to Do If You Lose Medi-Cal Coverage',meta:'Losing Medi-Cal is frightening — but a paperwork problem isn\'t the same as ineligibility. Here\'s how to act fast and recover coverage.',read:'5 min',
+body:[
+"Losing Medi-Cal can be frightening, especially if you have prescriptions, upcoming appointments, or a chronic condition that requires regular care. The first step is to slow down and read the notice carefully. A Medi-Cal termination notice should explain why coverage ended, when it ended, and what you can do next. The reason matters because a paperwork problem is different from an eligibility change.",
+"If your coverage ended because the county did not receive information, contact the county immediately. DHCS materials explain that if missing information is provided within 90 days and you still qualify, your Medi-Cal may be reinstated without gaps in coverage. That means a missed form does not always have to become a permanent loss of coverage. The faster you respond, the better your chances of fixing the problem.",
+"Start by gathering the documents connected to the notice. This may include the renewal form, proof of income, proof of address, identification, immigration-related documents if requested, or records showing who lives in your household. Do not send original documents unless the county specifically requires them. Keep copies of anything you submit and write down the date, method, and office or website used.",
+"If the issue is that your income is now too high for Medi-Cal, you may still have options. Covered California is the state marketplace where many Californians can buy health insurance, and financial help may be available depending on income and household circumstances. Covered California states that losing Medi-Cal creates a 90-day special enrollment period. That window is important. If you wait too long, you may have to wait until the next open enrollment period unless you have another qualifying life event.",
+"Medi-Cal and Covered California are connected in important ways. Covered California explains that when people apply through its system, eligibility for Medi-Cal can be determined automatically. So even if you are unsure which program fits your situation, applying through the official system can help route you to the correct option.",
+"If you have immediate medical needs, call your clinic, health plan, or county office and explain the situation. Some clinics have enrollment counselors or social workers who can help you understand whether coverage is active, pending, or ended. Do not assume a pharmacy rejection or appointment problem means you are permanently uninsured. Sometimes the issue is administrative, such as a plan change, data mismatch, or temporary processing delay.",
+"If you had a Medi-Cal managed care plan, also check whether the problem is with Medi-Cal eligibility or with the health plan assignment. When someone first qualifies for Medi-Cal, DHCS explains that they may be covered under fee-for-service Medi-Cal before enrolling in a managed care plan. Depending on the county, members may need to choose a plan within 30 days, or they may be automatically enrolled.",
+"A practical checklist can help: open the notice, identify the deadline, call the county, submit missing documents, ask whether the 90-day reinstatement period applies, check your BenefitsCal account, and explore Covered California if your Medi-Cal cannot continue. For families, ask about each household member separately.",
+"The biggest mistake is doing nothing. Health coverage systems are complicated, but deadlines are real. The sooner you respond, the more options you usually have. AccessMedCalifornia's mission is built around that reality: people should not lose care simply because a form was confusing, a notice was missed, or a family did not know where to turn."
+],sources:"DHCS, My Medi-Cal; Covered California, Special Enrollment; Covered California, Major Life Changes; DHCS, Medi-Cal Managed Care Health Plan Directory."},
+
+{id:3,cat:'eligibility',catLbl:'Eligibility',c:'c3',num:'03',title:'Medi-Cal Income Limits: What Families Should Know Before Applying',meta:'Eligibility isn\'t a simple yes or no. Household size, income type, age, and pregnancy all matter — and the safest answer is always to apply.',read:'6 min',
+body:[
+"Many people assume they either clearly qualify for Medi-Cal or clearly do not. In reality, eligibility can depend on household size, income type, age, pregnancy, disability status, and other factors. That is why online charts are useful, but they should not replace an actual application. DHCS itself describes its online eligibility tool as an estimate, not an application.",
+"For many adults, a common income standard is 138% of the federal poverty level. DHCS lists annual income limits by family size. For example, the DHCS eligibility chart lists $21,597 for a household of one, $29,187 for a household of two, $36,777 for a household of three, and $44,367 for a household of four. The limit increases as household size increases. These figures are useful for general planning, but eligibility rules can vary by category.",
+"Household size is one of the most important details. A household is not always just the people who live under one roof. Health coverage programs may look at tax filing relationships, dependents, spouses, children, pregnancy, and other factors. If a student lives away from home, a parent claims a child as a dependent, or relatives share housing but file separately, the correct household count may not be obvious.",
+"Income can also be confusing. Families may have wages, self-employment income, unemployment benefits, Social Security, child support, overtime, tips, or irregular seasonal income. A person who works hourly may have income that changes month to month. A family should report income as accurately as possible and update the county if it changes.",
+"It is also important not to self-deny. Some people decide not to apply because they think they earn too much, own a car, have savings, or are worried about paperwork. But Medi-Cal rules are category-specific, and some rules have changed over time. For example, DHCS states that starting January 1, 2026, Medi-Cal will look at assets for some people, including those age 65 or older, some people with disabilities, and some people in long-term care. That does not mean the same asset rule applies to every applicant.",
+"Children and pregnant people may have different pathways to coverage than other adults. A family that is slightly over the adult income limit may still have children who qualify. Pregnancy can also affect eligibility and coverage duration. DHCS states that pregnancy coverage lasts through the pregnancy and up to one year after it ends for groups that remain eligible for full-scope Medi-Cal regardless of immigration status.",
+"The best approach is to apply through an official channel and let the eligibility system decide. You can apply through BenefitsCal, your county office, or Covered California. DHCS states that completing a Covered California application can automatically determine Medi-Cal eligibility. This helps families avoid guessing which program they should use.",
+"If you are helping someone apply, focus on accuracy and documentation. Ask for recent pay stubs, benefit letters, tax documents if available, proof of address, and identification. If income varies, include notes or documents showing the variation. If something changed recently, such as job loss or reduced hours, make sure the application reflects the current situation.",
+"Income limits are not meant to scare people away from applying. They are a starting point. The safest message for families is: check the official chart, gather documents, apply through an official system, and update information quickly when life changes. A complete application is usually better than an assumption."
+],sources:"DHCS, Eligibility by Federal Poverty Level; DHCS, Qualify for Medi-Cal; DHCS, Update Your Information; DHCS, Asset Limit FAQs; DHCS, Medi-Cal and Covered California FAQs."},
+
+{id:4,cat:'renewal',catLbl:'Renewal Basics',c:'c4',num:'04',title:'Why Updating Your Address Can Protect Your Health Coverage',meta:'The simplest way to protect Medi-Cal is also the easiest to overlook: making sure the county can reach you.',read:'4 min',
+body:[
+"One of the simplest ways to protect Medi-Cal coverage is also one of the easiest to overlook: keeping your contact information current. If your county cannot reach you, you may miss renewal forms, requests for documents, or notices about changes to your coverage. By the time you realize something is wrong, your Medi-Cal may already be at risk.",
+"DHCS tells Medi-Cal members to report changes within 10 days. The examples include address, income, number of people in the home, pregnancy, marriage, or separation. Address changes are especially important because Medi-Cal renewal notices and county letters are often sent by mail. If you move but do not update your county, the most important letter of the year may go to your old home.",
+"This matters because Medi-Cal renewals happen every year. Sometimes the county can renew you automatically. Other times, the county needs more information and sends a renewal packet. DHCS says that if more information is needed, members may receive a renewal form in a yellow envelope. If that envelope goes to the wrong address, a family may lose coverage even though they still qualify.",
+"Phone numbers and email addresses matter too. Counties may use different methods to contact members, and online accounts may send reminders or document requests electronically. If you change your phone number, lose access to an email account, or stop checking an old mailbox, your case can become harder to manage.",
+"The best time to update information is immediately after a change. Do not wait for renewal season. If you move in March but your renewal is in September, update your address in March. If you get married, have a baby, lose a job, start a new job, or someone moves in or out, report the change when it happens. Waiting can create confusion later if the county's records do not match your current household.",
+"Updating information can be done online through BenefitsCal or by contacting the county office. If you update online, take a screenshot or save a confirmation if possible. If you call, write down the date, the office, and the name or ID of the person you spoke with if available. If you visit in person, ask for proof that the update was submitted.",
+"For families who move often, share housing, or use a relative's address, it can help to choose the most reliable mailing address and check it regularly. If your mail is unstable, ask the county about the best way to receive notices. Some people also benefit from creating a folder for Medi-Cal paperwork so renewal letters, case numbers, benefit cards, and notices are easy to find.",
+"Community organizations can play a major role here. Many coverage problems begin before anyone sees a doctor. A missed letter can become a missed prescription. A missed renewal can become a delayed appointment. A delayed appointment can become a worse health outcome. Helping families update contact information may seem small, but it can keep the door to care open.",
+"The key takeaway is simple: if your life changes, your Medi-Cal case should change too. Updating your address and household information is not just paperwork. It is preventive maintenance for your health coverage."
+],sources:"DHCS, Update Your Information; DHCS, Keep Your Medi-Cal; DHCS, Renewal Form; DHCS, FAQs."},
+
+{id:5,cat:'plans',catLbl:'Plans & Providers',c:'c5',num:'05',title:'How to Choose a Medi-Cal Health Plan Without Getting Overwhelmed',meta:'Approval for Medi-Cal and choosing a plan are related but not identical. Here\'s how to pick a plan you can actually use.',read:'5 min',
+body:[
+"After someone qualifies for Medi-Cal, the next step may be choosing a health plan. This can be confusing because approval for Medi-Cal and enrollment in a specific managed care plan are related but not identical. DHCS explains that when someone first qualifies, they may be covered under Medi-Cal fee-for-service. Depending on the county, they may need to choose a health plan within 30 days, or Medi-Cal may choose one for them. In some counties, members are automatically enrolled and should wait for a welcome packet.",
+"The most important factor in choosing a plan is usually provider access. If you already have a doctor, clinic, specialist, hospital, or pharmacy you trust, check whether they accept the plan before enrolling. A plan that looks good on paper may not be the best fit if your current doctor is not in the network. DHCS Health Care Options provides tools to compare medical and dental plans and find providers.",
+"Location matters too. A plan should have clinics, hospitals, pharmacies, and urgent care options that are realistic for your transportation situation. A clinic across the county may technically be available, but that does not help much if you cannot get there. Families should think about bus routes, work schedules, school schedules, caregiving responsibilities, and language access.",
+"Language access is another practical consideration. If you prefer care in a language other than English, check whether the plan or provider offers language services. Health coverage is only useful if you can understand your options, ask questions, and follow care instructions.",
+"For people with chronic conditions, medications and specialists matter. If you see a cardiologist, nephrologist, psychiatrist, OB-GYN, endocrinologist, or another specialist, ask whether that specialist is in network. If you take regular medications, ask how prescriptions are handled and whether your pharmacy participates. Do this before changing plans if possible.",
+"Dental coverage may be handled differently depending on the county and program structure, so do not assume the medical plan and dental access work the same way. DHCS Health Care Options includes information about comparing medical and dental plans. DHCS also explains that Medi-Cal dental benefits are available to members once approved, though some 2026 policy changes affect dental coverage for certain groups based on immigration-related eligibility categories.",
+"If you do not choose a plan by the deadline, DHCS states that Medi-Cal may choose a plan for you. Auto-assignment is not necessarily bad, but it may not consider your preferred doctor or clinic. That is why it is worth reviewing choices early.",
+"Once enrolled, keep the welcome packet, member ID card, and plan phone number. Learn how to choose or change a primary care provider, where to go for urgent care, and whom to call for advice. Many people only look for this information during a medical problem, when stress is already high.",
+"Choosing a Medi-Cal plan does not have to be perfect on the first try, but it should be intentional. Start with your doctors, medications, location, language needs, and family circumstances. Then use official comparison tools or ask for help from a trained enrollment counselor. The goal is not just to have coverage. The goal is to have coverage you can actually use."
+],sources:"DHCS, Medi-Cal Managed Care Health Plan Directory; Medi-Cal Health Care Options, Compare Plans; Medi-Cal Health Care Options, Find a Provider; DHCS, Medi-Cal Managed Care FAQs."},
+
+{id:6,cat:'benefits',catLbl:'Benefits',c:'c6',num:'06',title:'Medi-Cal Benefits People Often Forget About',meta:'Medi-Cal is more than doctor visits. Dental, vision, mental health, and transportation may all be covered.',read:'5 min',
+body:[
+"Many people think of Medi-Cal only as insurance for doctor visits. In reality, full-scope Medi-Cal can cover a broad range of services. DHCS describes Medi-Cal as California's Medicaid program, offering free or low-cost health coverage to people who qualify. DHCS also lists benefits such as doctor visits, dental care, eye exams, medicine, and more. Knowing what Medi-Cal may cover can help families use care earlier instead of waiting until a problem becomes urgent.",
+"Dental care is one major example. DHCS states that Medi-Cal offers comprehensive preventive and restorative dental benefits to both children and adults. Dental coverage matters because untreated oral health problems can affect nutrition, pain, school attendance, work, and overall health. Medi-Cal members can look for dental resources through the Medi-Cal Dental Program or call the Medi-Cal Dental member line listed by DHCS.",
+"Vision care is another benefit people may not realize they have. DHCS states that all Medi-Cal members are eligible for a routine eye exam that checks eye health and tests for an eyeglass prescription. More frequent eye exams may be covered when medically necessary, such as for eye pain or blurred vision. For children, vision access can affect school performance. For adults, it can affect driving, work, medication management, and safety.",
+"Mental health and substance use treatment are also part of full-scope Medi-Cal benefits. DHCS materials describe full-scope coverage as including medical, dental, mental health, vision care, alcohol and drug use treatment, medications ordered by a doctor, and more. This is important because behavioral health is health care. People should not assume Medi-Cal is only for physical illness.",
+"Children and youth have additional protections through EPSDT, the Early and Periodic Screening, Diagnostic, and Treatment benefit. DHCS explains that EPSDT applies to individuals under age 21 with full-scope Medi-Cal eligibility and can include screenings and medically necessary services beyond standard benefits. Families should ask their child's provider or health plan about needed services rather than assuming something is not covered.",
+"Transportation may also be relevant for some members, especially those who need help getting to covered services. Coverage details can depend on the type of transportation and medical necessity, so members should ask their health plan or provider. The broader point is that barriers to care are not always medical. Getting to an appointment can be part of getting care.",
+"There are also important 2026 changes to watch. DHCS states that starting July 1, 2026, some Medi-Cal members will stop getting full-scope dental services as part of their Medi-Cal coverage. DHCS identifies groups who can still get full-scope Medi-Cal regardless of immigration status, including children ages 0 to 18, pregnant people through pregnancy and up to one year after it ends, and former foster youth under age 26 who were in foster care on their 18th birthday. Because these rules are specific, members should check official DHCS notices or ask their county or health plan before assuming what applies to them.",
+"The safest advice is to ask before paying out of pocket or skipping care. If you need dental care, an eye exam, medications, mental health support, or a specialist visit, contact your health plan, provider, county office, or an enrollment counselor. Medi-Cal benefits are only powerful when people know how to use them."
+],sources:"DHCS, Medi-Cal; DHCS, What Are the Medi-Cal Benefits; DHCS, Medi-Cal Vision Benefits; DHCS, Essential Health Benefits; DHCS, Medi-Cal Changes."},
+
+{id:7,cat:'immigration',catLbl:'Immigration & 2026',c:'c1',num:'07',title:'Medi-Cal and Immigration Status: What Changed in 2026',meta:'2026 brought important new limits. Here\'s what changed, who is still protected, and how to find accurate help.',read:'5 min',
+body:[
+"Medi-Cal eligibility connected to immigration status has changed several times, and 2026 brought important new limits. Because this topic is sensitive and policy-specific, families should rely on official notices, county eligibility workers, qualified legal resources, and trusted enrollment counselors rather than rumors.",
+"DHCS states that starting January 1, 2026, some adults will no longer be able to newly sign up for full-scope Medi-Cal based on immigration status. DHCS also explains that people who already had certain coverage before that date may be treated differently from people applying after that date. This means two people with similar incomes and ages may have different options depending on when they enrolled and which eligibility category applies.",
+"DHCS identifies groups who can still get full-scope Medi-Cal regardless of immigration status: children ages 0 to 18, pregnant people during pregnancy and up to one year after pregnancy ends, and former foster youth under age 26 who were in foster care on their 18th birthday. These categories are important because a parent's eligibility limits do not automatically mean a child cannot qualify. Families should ask about each person separately.",
+"Dental coverage is also changing. DHCS states that starting July 1, 2026, some Medi-Cal members will stop getting full-scope dental services as part of their Medi-Cal coverage. DHCS also describes emergency dental care rules for affected groups. Because dental rules vary by eligibility category, members should read DHCS notices carefully and contact their county or health plan for case-specific guidance.",
+"A major practical point is that people should not assume they are ineligible without checking. Even if one form of full-scope Medi-Cal is not available, another program or limited coverage option may apply. Emergency services, pregnancy coverage, children's coverage, former foster youth coverage, Covered California options, and county or community clinic programs may be relevant depending on the person's situation.",
+"Families should also be careful with misinformation. A social media post, neighbor's experience, or old flyer may not reflect current rules. The date matters. Whether someone applied before or after January 1, 2026 may matter. Age, pregnancy, foster youth status, income, and county processing may matter.",
+"For community organizations, the best role is to help people find official information, understand notices, and connect with qualified help. Avoid giving immigration legal advice unless you are qualified to do so. Instead, help families gather documents, identify deadlines, contact the county, and ask the right questions.",
+"The most important questions to ask are: Am I applying for the first time or renewing existing coverage? What is my age? Am I pregnant or recently pregnant? Was I in foster care on my 18th birthday and am I under 26? Do I have children who may qualify separately? Did I receive a notice about a change to dental or full-scope benefits?",
+"Policy changes can make people feel like they should avoid the system entirely. But avoiding information can lead to missed coverage for children, pregnant people, or other eligible family members. The safest step is to check official sources and get help from trusted organizations. Access to care begins with accurate information."
+],sources:"DHCS, Medi-Cal Changes 2026-2028; DHCS, Immigration Status and Changes to Medi-Cal Eligibility; DHCS, January 5, 2026 update; DHCS, Eligibility Based on Immigration Status for the Adult Expansion Freeze."},
+
+{id:8,cat:'eligibility',catLbl:'Eligibility',c:'c2',num:'08',title:'Covered California vs. Medi-Cal: Which One Should You Apply For?',meta:'Two connected programs, two different roles. Apply through the official system and let it decide which fits.',read:'5 min',
+body:[
+"People often ask whether they should apply for Medi-Cal or Covered California. The answer is usually: use an official application system and let it determine which program fits. Medi-Cal and Covered California are connected, but they serve different roles. Medi-Cal is California's Medicaid program, offering free or low-cost coverage to people who qualify. Covered California is the state marketplace where people can buy private health insurance plans, often with financial help depending on income and household circumstances.",
+"DHCS explains that when someone completes a Covered California application, eligibility for Medi-Cal can be automatically determined. This is helpful because many people are not sure where they fall. A family's income may be near a cutoff, or different household members may qualify for different programs. Children may qualify for Medi-Cal even when adults do not. A parent may qualify for Covered California while a child qualifies for Medi-Cal.",
+"Timing is one difference. Medi-Cal enrollment is generally available year-round for people who qualify. Covered California has an open enrollment period, and outside that period people usually need a qualifying life event. Covered California states that most special enrollment periods last 60 days from the date of a major life change. It also states that losing Medi-Cal creates a 90-day special enrollment period.",
+"Common qualifying life events include losing health insurance, moving, getting married, having a baby, or other major changes. Covered California's special enrollment rules matter because waiting too long after a life event can limit options. If you lose employer coverage or Medi-Cal, mark the date immediately and apply as soon as possible.",
+"Costs can also differ. Medi-Cal may have no monthly premium for many members, while Covered California plan costs depend on the plan, income, household size, and available financial help. Covered California subsidies can lower monthly premiums, but people should report income accurately because financial help can affect taxes. If income changes during the year, update the application.",
+"Provider networks may differ too. A doctor who accepts one Medi-Cal managed care plan may not accept a Covered California plan, and the reverse may also be true. Before choosing a plan, check doctors, clinics, hospitals, pharmacies, medications, and specialists.",
+"A common mistake is assuming that denial from one program means no coverage is available. If Medi-Cal says your income is too high, Covered California may be an option. If Covered California determines your income is low enough for Medi-Cal, it may route your application to Medi-Cal. If one family member qualifies for Medi-Cal and another does not, the household may still be able to combine coverage types.",
+"For students, gig workers, mixed-status families, people between jobs, and families with changing income, the best strategy is to apply with current information and update changes quickly. Keep copies of notices. Review deadlines. Ask for help if you do not understand which program you were assigned to.",
+"The goal is not to memorize every eligibility rule. The goal is to avoid gaps in care. Medi-Cal and Covered California are both parts of California's coverage system. Using the official application pathway, responding to notices, and updating changes can help you land in the right program at the right time."
+],sources:"DHCS, Medi-Cal; DHCS, Medi-Cal and Covered California FAQs; Covered California, Special Enrollment; Covered California, Major Life Changes; Covered California, Federal Changes to Your Health Insurance."},
+
+{id:9,cat:'medicare',catLbl:'Medicare & Dual',c:'c3',num:'09',title:'Medi-Medi Plans: What Dual-Eligible Californians Should Know',meta:'Some Californians have both Medicare and Medi-Cal. Integrated plans can simplify care — but a plan is only useful if it covers your doctors.',read:'5 min',
+body:[
+"Some Californians qualify for both Medicare and Medi-Cal. These members are often called dual eligible. Having two programs can help with coverage, but it can also create confusion: different cards, different plans, different pharmacies, different notices, and different phone numbers. Medi-Medi Plans are designed to coordinate care for people who have both Medicare and Medi-Cal.",
+"DHCS describes Medi-Medi Plans as integrated plans for people with both Medicare and Medi-Cal. According to DHCS, these plans include Medicare Part A, B, and D benefits as well as Medi-Cal benefits. DHCS also states that Medi-Medi Plans can provide one care team, one health plan, one set of benefits, and a coordinated network of doctors, hospitals, clinics, labs, pharmacies, and medical equipment suppliers.",
+"Care coordination is the key idea. A dual-eligible person may see a primary care doctor, specialists, home health providers, pharmacies, and long-term services and supports. If those services are poorly coordinated, patients and caregivers can end up acting as the messenger between systems. An integrated plan aims to reduce that fragmentation.",
+"DHCS announced that starting in 2026, California is expanding access to Medi-Medi Plans to improve care coordination for people eligible for both Medicare and Medi-Cal. DHCS stated that Medi-Medi Plans were serving approximately 330,000 members in 12 counties at the time of its January 2026 update: Fresno, Kings, Los Angeles, Madera, Orange, Riverside, Sacramento, San Bernardino, San Diego, San Mateo, Santa Clara, and Tulare. Availability can depend on county and plan options, so members should check official DHCS information before making decisions.",
+"A Medi-Medi Plan may be especially relevant for someone who has many prescriptions, multiple specialists, medical equipment, transportation needs, or long-term services and supports. It may also help caregivers who are trying to coordinate appointments and benefits. But a plan is only useful if it includes the providers and medications a person needs.",
+"Before enrolling, members should ask practical questions. Are my current doctors in network? Is my pharmacy included? Are my medications covered? How are referrals handled? What dental, hearing, or vision benefits are available? How does the plan coordinate transportation, medical supplies, or long-term services? What happens if I am already in a Medicare Advantage plan?",
+"Caregivers should also help members read mail carefully. Medicare and Medi-Cal notices can look similar, but they may involve different deadlines or choices. Keep letters in date order and do not throw away plan notices until you understand them.",
+"Medi-Medi Plans are not just an insurance topic; they are a care navigation topic. For older adults and people with disabilities, the difficulty is often not one appointment. It is the ongoing task of keeping the whole care system organized. If integration works well, it can make health care easier to manage.",
+"Anyone considering a Medi-Medi Plan should use official DHCS resources, contact the plan, and seek unbiased counseling when needed. The right choice depends on county, providers, prescriptions, and personal care needs."
+],sources:"DHCS, Medi-Medi Plans; DHCS, January 5, 2026 Medi-Medi Plan Expansion; DHCS, Medi-Cal Managed Care FAQs."},
+
+{id:10,cat:'family',catLbl:'Family Resources',c:'c4',num:'10',title:'A Family Checklist for Medi-Cal Documents and Deadlines',meta:'Most coverage problems aren\'t one big mistake — they\'re scattered paperwork. A simple folder system can prevent them.',read:'5 min',
+body:[
+"Many health coverage problems are not caused by one big mistake. They happen because small pieces of paperwork get scattered: a missing pay stub, an old address, an unopened envelope, a renewal date no one wrote down, or a notice that was misunderstood. A simple document system can protect families from losing coverage unnecessarily.",
+"Start with one folder, either physical, digital, or both. Label it clearly: Medi-Cal and Health Coverage. Inside, keep copies of Medi-Cal notices, renewal forms, proof of submission, county letters, BenefitsCal login information, health plan cards, dental plan information, pharmacy cards, and contact numbers. If multiple family members have coverage, create a section for each person.",
+"The first date to track is the Medi-Cal renewal date. Covered California explains that Medi-Cal renewal happens throughout the year, on the anniversary of enrollment. DHCS explains that counties send letters about renewals each year, and some members are renewed automatically while others must return a form. Write the renewal month on a calendar and begin watching mail early.",
+"The second deadline is the due date on any county request. If a renewal form arrives, especially in the yellow envelope DHCS describes, complete it and return it before the deadline. If you submit documents online, save a confirmation. If you mail documents, keep copies. If you submit in person, ask for a receipt when possible.",
+"The third deadline involves life changes. DHCS tells Medi-Cal members to report changes such as address, income, household size, pregnancy, marriage, or separation within 10 days. Families should treat this as a routine habit. If someone starts a job, loses a job, moves, has a baby, or changes marital status, update the county instead of waiting for renewal.",
+"The fourth deadline matters if coverage ends. DHCS materials explain that if missing information caused Medi-Cal to end, providing the information within 90 days may allow reinstatement if the person still qualifies. Covered California also states that losing Medi-Cal creates a 90-day special enrollment period for Covered California. Both timelines make fast action important.",
+"A strong document folder should include proof of income. This can mean pay stubs, benefit letters, unemployment information, Social Security letters, or self-employment records. For people with irregular income, keep several months of documents if possible. Also keep proof of address, identification, immigration-related documents if requested, birth records for children when relevant, and pregnancy documentation if applicable.",
+"Families should also keep a call log. Each time you call the county, health plan, or Covered California, write down the date, phone number, person you spoke with, and what they said. If someone tells you to submit a document, write down exactly what document and how to submit it. This record can help if there is confusion later.",
+"For community volunteers, document organization is one of the most practical ways to help. You do not need to know every eligibility rule to help someone open mail, identify deadlines, gather documents, and contact the correct office. That support can prevent small administrative issues from becoming medical crises.",
+"A folder cannot solve every coverage problem, but it gives families control. Health care is stressful enough without searching for a missing notice. Organization is not just paperwork. It is a way to keep coverage stable, appointments scheduled, medications filled, and families connected to care."
+],sources:"DHCS, Keep Your Medi-Cal; DHCS, Update Your Information; DHCS, Renewal Form; Covered California, Steps to Renew; Covered California, Special Enrollment; DHCS, My Medi-Cal."}
+];
+
+/* Render grid (skip post 1, used as featured) */
+let currentFilter='all';
+function renderGrid(){
+  const g=document.getElementById('postgrid');
+  const filtered=POSTS.filter(p=>p.id!==1 && (currentFilter==='all'||p.cat===currentFilter));
+  // include post 1 in non-default filters
+  const fullList=POSTS.filter(p=>currentFilter==='all'?p.id!==1:p.cat===currentFilter);
+  g.innerHTML=fullList.map(p=>`
+    <button class="post" data-id="${p.id}">
+      <div class="post-img ${p.c}"><span class="post-tag">${p.catLbl}</span><span>${p.num}</span></div>
+      <div class="post-body">
+        <h4>${p.title}</h4>
+        <p>${p.meta}</p>
+        <div class="post-meta"><span class="read">📖 ${p.read} read</span><span class="arrow">Read →</span></div>
+      </div>
+    </button>`).join('');
+  document.getElementById('countLbl').textContent=fullList.length+(fullList.length===1?' article':' articles');
+  document.querySelectorAll('.post').forEach(b=>b.addEventListener('click',()=>openPost(+b.dataset.id)));
+}
+renderGrid();
+
+/* Filters */
+document.querySelectorAll('#filters button').forEach(b=>{
+  b.addEventListener('click',()=>{
+    document.querySelectorAll('#filters button').forEach(x=>x.classList.remove('active'));
+    b.classList.add('active');
+    currentFilter=b.dataset.cat;
+    renderGrid();
+  });
+});
+
+/* Featured click */
+document.querySelector('.featured').addEventListener('click',()=>openPost(1));
+
+/* Modal */
+const modalBg=document.getElementById('modalBg');
+const modalHead=document.getElementById('modalHead');
+const modalBody=document.getElementById('modalBody');
+const navPrev=document.getElementById('navPrev');
+const navNext=document.getElementById('navNext');
+let curId=null;
+
+function openPost(id){
+  const p=POSTS.find(x=>x.id===id);
+  if(!p)return;
+  curId=id;
+  modalHead.innerHTML=`
+    <span class="mtag">${p.catLbl}</span>
+    <h2>${p.title}</h2>
+    <div class="mmeta"><span>📖 ${p.read} read</span><span>🗓️ Jun 2026</span><span>Article ${p.num} of 10</span></div>`;
+  modalBody.innerHTML=p.body.map(par=>`<p>${par}</p>`).join('')+`<div class="sources"><b>Sources:</b> ${p.sources}<br><br><small>This article was prepared from official DHCS and Covered California sources for educational purposes. Policy can change — verify current details at <a href="https://benefitscal.com" target="_blank" style="color:var(--teal-dark);font-weight:600">BenefitsCal.com</a> or with your county.</small></div>`;
+  modalBody.scrollTop=0;
+
+  const prev=POSTS.find(x=>x.id===id-1);
+  const next=POSTS.find(x=>x.id===id+1);
+  navPrev.innerHTML=prev?`<span>← Previous</span><b>${prev.title}</b>`:'';
+  navPrev.style.visibility=prev?'visible':'hidden';
+  navPrev.onclick=()=>prev&&openPost(prev.id);
+  navNext.innerHTML=next?`<span>Next →</span><b>${next.title}</b>`:'';
+  navNext.style.visibility=next?'visible':'hidden';
+  navNext.onclick=()=>next&&openPost(next.id);
+
+  modalBg.classList.add('show');
+  document.body.style.overflow='hidden';
+  location.hash='article-'+id;
+}
+function closeModal(){
+  modalBg.classList.remove('show');
+  document.body.style.overflow='';
+  if(location.hash.startsWith('#article-'))history.replaceState(null,'',location.pathname);
+}
+document.getElementById('modalClose').addEventListener('click',closeModal);
+modalBg.addEventListener('click',e=>{if(e.target===modalBg)closeModal();});
+document.addEventListener('keydown',e=>{
+  if(!modalBg.classList.contains('show'))return;
+  if(e.key==='Escape')closeModal();
+  if(e.key==='ArrowLeft'&&curId>1)openPost(curId-1);
+  if(e.key==='ArrowRight'&&curId<10)openPost(curId+1);
+});
+
+/* Copy link */
+document.getElementById('copyLink').addEventListener('click',()=>{
+  const u=location.origin+location.pathname+'#article-'+curId;
+  navigator.clipboard?.writeText(u);
+  const b=document.getElementById('copyLink');
+  const t=b.textContent;b.textContent='✓ Link copied';setTimeout(()=>b.textContent=t,1600);
+});
+
+/* Open from URL hash */
+if(location.hash.startsWith('#article-')){
+  const id=+location.hash.replace('#article-','');
+  if(id>=1&&id<=10)setTimeout(()=>openPost(id),400);
+}
+
+/* Scroll reveal */
+const revObs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');revObs.unobserve(e.target);}}),{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>revObs.observe(el));
+
+/* Hamburger */
+document.getElementById('hamBtn')?.addEventListener('click',e=>{e.stopPropagation();document.getElementById('mainNav').classList.toggle('open');});
+document.addEventListener('click',e=>{if(!e.target.closest('#mainNav')&&!e.target.closest('#hamBtn'))document.getElementById('mainNav')?.classList.remove('open');});
+
+document.querySelectorAll('#langBar button').forEach(b=>b.addEventListener('click',()=>{
+  try{localStorage.setItem('amcLang',b.dataset.lang);}catch(_){}
+  if(b.dataset.lang!=='en')location.href='index.html?lang='+b.dataset.lang;
+  else{document.querySelectorAll('#langBar button').forEach(x=>x.classList.remove('active'));b.classList.add('active');}
+}));
+try{const saved=localStorage.getItem('amcLang');if(saved){document.querySelectorAll('#langBar button').forEach(x=>x.classList.toggle('active',x.dataset.lang===saved));}}catch(_){}
+</script>
+</body>
+</html>

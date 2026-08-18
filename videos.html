@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<meta name="description" content="Official Medi-Cal and BenefitsCal video tutorials from the California Department of Health Care Services — collected here as educational community support.">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Video Tutorials — AccessMed California</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://i.ytimg.com">
+<link rel="preconnect" href="https://www.youtube.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#1c3a5e; --navy-d:#122947; --navy-l:#e8eff5; --navy-50:#f4f7fa;
+  --teal:#2ca8a8; --teal-d:#1f7a7a; --teal-l:#dff0f0;
+  --sage:#8dc63f; --sage-d:#6ba832; --sage-l:#eef7dc;
+  --amber:#e0930c; --amber-l:#fef3d5;
+  --ink:#15243a; --ink-2:#3d4f6a; --muted:#66768a; --muted-2:#95a3b5;
+  --line:#e6ecf1; --line-2:#f0f3f6; --bg:#fafbfc; --white:#fff;
+  --yt:#ff0000;
+  --radius:14px; --radius-lg:20px;
+  --shadow-sm:0 2px 8px rgba(20,54,95,.06);
+  --shadow:0 6px 24px rgba(20,54,95,.09);
+  --shadow-lg:0 16px 48px rgba(20,54,95,.15);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:Georgia,'Times New Roman',serif;color:var(--ink);background:var(--bg);line-height:1.65;-webkit-font-smoothing:antialiased}
+input,select,textarea,button{font-family:'Inter',system-ui,sans-serif}
+.nav a,nav.links a{font-family:'Inter',system-ui,sans-serif}
+img,svg{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1160px;margin:0 auto;padding:0 22px}
+.wrap-nar{max-width:820px;margin:0 auto;padding:0 22px}
+
+.btn{display:inline-flex;align-items:center;gap:8px;font-weight:600;font-size:15.5px;padding:13px 22px;border-radius:8px;border:0;cursor:pointer;transition:all .18s ease}
+.btn-primary{background:var(--navy);color:#fff}
+.btn-primary:hover{background:var(--navy-d);transform:translateY(-1px)}
+.btn-outline{background:#fff;color:var(--navy);border:1.5px solid var(--navy-l)}
+.btn-outline:hover{border-color:var(--navy);background:var(--navy-50)}
+.btn-ghost{background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,.4)}
+.btn-lg{font-size:16.5px;padding:15px 28px}
+
+.eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--teal-d);font-family:'Inter',sans-serif}
+.eyebrow::before{content:"";width:24px;height:1.5px;background:var(--teal);border-radius:1px}
+
+.section{padding:56px 0}
+.section h2{font-family:Georgia,'Times New Roman',serif;font-size:32px;font-weight:600;letter-spacing:-.02em;color:var(--navy);margin:12px 0 12px;line-height:1.14}
+.section .lead{font-size:17px;color:var(--muted);max-width:640px;line-height:1.65}
+.center{text-align:center}.center .lead{margin:0 auto}
+.reveal{opacity:0;transform:translateY(14px);transition:opacity .55s ease,transform .55s ease}
+.reveal.in{opacity:1;transform:none}
+
+.topbar{background:var(--navy);color:#c8d3e0;font-size:13px}
+.topbar .wrap{display:flex;justify-content:space-between;align-items:center;padding:8px 22px;flex-wrap:wrap;gap:12px}
+.topbar a{color:#fff;font-weight:600}
+.lang{display:flex;gap:3px;flex-wrap:wrap;align-items:center}
+.lang button{background:transparent;border:1px solid rgba(255,255,255,.16);color:#fff;font-size:11.5px;font-weight:500;padding:3px 8px;border-radius:5px;cursor:pointer;font-family:inherit;transition:all .15s}
+.lang button:hover{background:rgba(255,255,255,.14);border-color:rgba(255,255,255,.3)}
+.lang button.active{background:var(--sage);color:var(--navy-d);border-color:var(--sage);font-weight:700}
+
+header.nav{position:sticky;top:0;z-index:60;background:rgba(250,251,252,.96);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+header.nav .wrap{display:flex;align-items:center;justify-content:space-between;padding:14px 22px;gap:14px;position:relative}
+.logo{display:flex;align-items:center;gap:10px}
+.logo-svg{width:36px;height:36px;flex-shrink:0}
+.logo-text{display:flex;flex-direction:column;line-height:1.1}
+.logo-text .row{font-family:Georgia,'Times New Roman',serif;font-weight:600;letter-spacing:-.01em;font-size:19px}
+.logo-text .row .a{color:var(--navy)}.logo-text .row .m{color:var(--teal)}.logo-text .row .c{color:var(--navy)}
+.logo-text .sub{font-size:9.5px;color:var(--muted);font-weight:500;letter-spacing:.06em;text-transform:uppercase;margin-top:2px;font-family:'Inter',sans-serif}
+nav.links{display:flex;gap:2px;align-items:center}
+nav.links a{font-size:14px;font-weight:500;color:var(--ink-2);padding:8px 11px;border-radius:6px;transition:all .15s}
+nav.links a:hover{color:var(--navy);background:var(--navy-50)}
+nav.links a.cur{color:var(--navy);background:var(--navy-l)}
+.hamburger{display:none;background:none;border:0;font-size:22px;cursor:pointer;color:var(--navy);padding:4px 8px;line-height:1}
+@media(max-width:1000px){
+  .hamburger{display:block}
+  nav.links{position:absolute;top:100%;right:0;background:#fff;border:1px solid var(--line);border-top:0;border-radius:0 0 12px 12px;flex-direction:column;padding:8px;box-shadow:var(--shadow);display:none;min-width:200px;align-items:stretch}
+  nav.links.open{display:flex}
+  nav.links a{padding:11px 14px;font-size:14.5px;width:100%;border-radius:6px}
+}
+
+/* Page header */
+.pgHead{background:var(--navy);color:#fff;padding:64px 0 44px;position:relative;overflow:hidden}
+.pgHead::before{content:"";position:absolute;top:0;right:0;width:60%;height:100%;background:radial-gradient(ellipse at 75% 40%,rgba(44,168,168,.25),transparent 60%);pointer-events:none}
+.pgHead .wrap{position:relative}
+.pgHead .eyebrow{color:var(--sage-l)}.pgHead .eyebrow::before{background:var(--sage-l)}
+.pgHead h1{font-family:Georgia,serif;font-size:44px;font-weight:600;letter-spacing:-.03em;margin:10px 0 14px;line-height:1.08;max-width:800px}
+.pgHead p{font-size:17px;color:#dbe4ee;line-height:1.6;max-width:720px}
+
+/* Attribution banner */
+.attribution{background:#fff;border:1px solid var(--amber);border-left:5px solid var(--amber);border-radius:12px;padding:22px 26px;margin:32px 0 8px;box-shadow:var(--shadow-sm)}
+.attribution .lbl{font-family:'Inter',sans-serif;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#c07908;margin-bottom:10px;display:flex;align-items:center;gap:8px}
+.attribution .lbl::before{content:"";width:8px;height:8px;background:var(--amber);border-radius:50%}
+.attribution h3{font-family:Georgia,serif;font-size:18px;color:var(--navy);font-weight:600;margin-bottom:8px;line-height:1.35}
+.attribution p{font-size:14.5px;color:var(--ink-2);line-height:1.65;margin-bottom:8px}
+.attribution p:last-of-type{margin-bottom:0}
+.attribution a{color:var(--teal-d);font-weight:600;text-decoration:underline}
+.attribution .channel-tag{display:inline-flex;align-items:center;gap:8px;background:var(--navy-50);border:1px solid var(--navy-l);border-radius:6px;padding:6px 12px;margin-top:8px;font-size:13px;color:var(--navy);font-weight:600;font-family:'Inter',sans-serif;text-decoration:none}
+.attribution .channel-tag svg{width:14px;height:14px;flex-shrink:0}
+
+/* Category tabs */
+.tabs{display:flex;gap:6px;margin-top:32px;margin-bottom:24px;border-bottom:2px solid var(--line);overflow-x:auto;padding-bottom:1px}
+.tabs button{background:transparent;border:0;color:var(--muted);font-family:'Inter',sans-serif;font-size:15px;font-weight:600;padding:14px 20px;cursor:pointer;border-bottom:3px solid transparent;margin-bottom:-2px;white-space:nowrap;transition:all .15s}
+.tabs button:hover{color:var(--navy)}
+.tabs button.active{color:var(--navy);border-bottom-color:var(--teal)}
+.tabs button .count{font-size:12px;color:var(--muted-2);font-weight:500;margin-left:5px}
+.tabs button.active .count{color:var(--teal-d)}
+
+/* Video grid */
+.vid-panel{display:none}
+.vid-panel.active{display:block;animation:fade .35s ease}
+@keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.vid-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+@media(max-width:1000px){.vid-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:640px){.vid-grid{grid-template-columns:1fr}}
+
+.vid-card{background:#fff;border:1px solid var(--line);border-radius:14px;overflow:hidden;transition:transform .2s,box-shadow .2s;display:flex;flex-direction:column}
+.vid-card:hover{transform:translateY(-3px);box-shadow:var(--shadow)}
+
+/* Click-to-play thumbnail (loads YouTube iframe only after click — reliable & fast) */
+.vid-frame{position:relative;background:#000;aspect-ratio:16/9;overflow:hidden;cursor:pointer}
+.vid-frame img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .3s,filter .2s}
+.vid-frame:hover img{transform:scale(1.03);filter:brightness(.75)}
+.vid-frame .play-btn{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:64px;height:44px;background:rgba(0,0,0,.75);border:0;border-radius:12px;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all .2s;padding:0}
+.vid-frame:hover .play-btn{background:var(--yt);transform:translate(-50%,-50%) scale(1.06)}
+.vid-frame .play-btn svg{width:24px;height:24px;fill:#fff;margin-left:2px}
+.vid-frame iframe{width:100%;height:100%;border:0;display:block}
+.vid-frame .yt-badge{position:absolute;top:10px;right:10px;background:rgba(0,0,0,.7);color:#fff;font-family:'Inter',sans-serif;font-size:10.5px;font-weight:600;padding:3px 8px;border-radius:4px;letter-spacing:.05em}
+
+.vid-body{padding:18px 20px 20px;display:flex;flex-direction:column;flex:1}
+.vid-body h4{font-family:Georgia,serif;font-size:17px;color:var(--navy);font-weight:600;line-height:1.28;margin-bottom:8px;letter-spacing:-.005em}
+.vid-body p{font-size:14px;color:var(--ink-2);line-height:1.55;flex:1;margin-bottom:14px}
+.vid-meta{font-family:'Inter',sans-serif;font-size:11.5px;border-top:1px solid var(--line-2);padding-top:11px;display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
+.vid-credit{color:var(--muted-2);display:flex;align-items:center;gap:6px}
+.vid-credit svg{width:12px;height:12px;flex-shrink:0;fill:var(--yt)}
+.vid-credit a{color:var(--teal-d);font-weight:600}
+.vid-credit a:hover{text-decoration:underline}
+.vid-external{color:var(--teal-d);font-weight:600;display:inline-flex;align-items:center;gap:4px}
+.vid-external:hover{color:var(--teal);text-decoration:underline}
+.vid-external svg{width:11px;height:11px}
+
+/* Extra resource block */
+.extra{background:var(--navy-50);border:1px solid var(--navy-l);border-radius:14px;padding:24px 26px;margin-top:36px}
+.extra h3{font-family:Georgia,serif;font-size:20px;color:var(--navy);font-weight:600;margin-bottom:8px}
+.extra p{font-size:15px;color:var(--ink-2);line-height:1.65;margin-bottom:12px}
+.extra ul{list-style:none;padding:0;margin:10px 0}
+.extra ul li{padding:6px 0;font-size:14.5px}
+.extra ul li a{color:var(--teal-d);font-weight:600;text-decoration:underline}
+.extra ul li a:hover{color:var(--teal)}
+
+/* Legal footer for the videos section */
+.legal{background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:20px 24px;margin-top:32px;font-family:'Inter',sans-serif}
+.legal h4{font-size:13px;font-weight:700;color:var(--navy);text-transform:uppercase;letter-spacing:.06em;margin-bottom:10px}
+.legal p{font-size:13px;color:var(--muted);line-height:1.6;margin-bottom:8px}
+.legal p:last-child{margin-bottom:0}
+.legal b{color:var(--ink-2)}
+
+/* Footer */
+footer{background:var(--navy-d);color:#a3b3c7;font-size:14px;padding:44px 0 22px}
+footer .fgrid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1.2fr;gap:32px}
+@media(max-width:780px){footer .fgrid{grid-template-columns:1fr 1fr}}
+footer h4{color:#fff;font-size:14px;margin-bottom:12px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;font-family:'Inter',sans-serif}
+footer a{color:#a3b3c7;display:block;padding:3px 0;font-size:13.5px}
+footer a:hover{color:#fff}
+footer .fabout{max-width:280px;font-size:13.5px;line-height:1.6;margin-top:12px}
+.fhotline{background:rgba(224,147,12,.12);border:1px solid rgba(224,147,12,.3);border-radius:8px;padding:11px 13px;color:#f5c76e;font-size:13px;line-height:1.55}
+.fbottom{border-top:1px solid rgba(255,255,255,.08);margin-top:30px;padding-top:18px;font-size:12.5px;color:#7385a0;line-height:1.6}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><symbol id="amcLogo" viewBox="0 0 100 100"><circle cx="50" cy="50" r="46" fill="#fff" stroke="#1c3a5e" stroke-width="4"/><rect x="22" y="28" width="3.5" height="36" fill="#1c3a5e"/><rect x="74.5" y="28" width="3.5" height="36" fill="#1c3a5e"/><rect x="20" y="26" width="7.5" height="3" fill="#1c3a5e"/><rect x="72.5" y="26" width="7.5" height="3" fill="#1c3a5e"/><rect x="20" y="42" width="7.5" height="2" fill="#1c3a5e"/><rect x="72.5" y="42" width="7.5" height="2" fill="#1c3a5e"/><rect x="20" y="52" width="7.5" height="2" fill="#1c3a5e"/><rect x="72.5" y="52" width="7.5" height="2" fill="#1c3a5e"/><path d="M 25 32 Q 50 60 75 32" fill="none" stroke="#1c3a5e" stroke-width="2.2"/><rect x="13" y="62" width="74" height="3" fill="#1c3a5e"/><rect x="13" y="65" width="74" height="1.5" fill="#1c3a5e" opacity=".6"/><path d="M 33 72 Q 47 65 60 72 Q 62 76 55 78 L 33 78 Z" fill="#8dc63f"/><path d="M 14 78 Q 25 73 36 78 Q 50 84 64 77 Q 76 73 84 78 L 84 84 L 14 84 Z" fill="#2ca8a8"/></symbol><symbol id="ytIcon" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></symbol></defs></svg>
+
+<div class="topbar">
+  <div class="wrap">
+    <div>Medi-Cal helpline: <a href="tel:8005415555">(800) 541-5555</a> · free</div>
+    <div class="lang" id="langBar">
+      <button data-lang="en" class="active">EN</button>
+      <button data-lang="es">ES</button>
+      <button data-lang="zh">中文</button>
+      <button data-lang="hi">हिन्दी</button>
+      <button data-lang="pa">ਪੰਜਾਬੀ</button>
+      <button data-lang="vi">Tiếng Việt</button>
+      <button data-lang="tl">Tagalog</button>
+      <button data-lang="ko">한국어</button>
+      <button data-lang="ar">العربية</button>
+    </div>
+  </div>
+</div>
+
+<header class="nav">
+  <div class="wrap">
+    <a href="index.html" class="logo">
+      <svg class="logo-svg" viewBox="0 0 100 100"><use href="#amcLogo"/></svg>
+      <div class="logo-text">
+        <div class="row"><span class="a">Access</span><span class="m">Med</span><span class="c">California</span></div>
+        <div class="sub">Improving Access · Building Awareness</div>
+      </div>
+    </a>
+    <nav class="links" id="mainNav">
+      <a href="index.html">Home</a>
+      <a href="mission.html">Mission</a>
+      <a href="tools.html">Tools</a>
+      <a href="videos.html" class="cur">Videos</a>
+      <a href="blog.html">Blog</a>
+      <a href="impact.html">Impact</a>
+      <a href="help.html">How to Help</a>
+    </nav>
+    <button class="hamburger" id="hamBtn" aria-label="Menu">☰</button>
+  </div>
+</header>
+
+<section class="pgHead">
+  <div class="wrap">
+    <span class="eyebrow">Official video tutorials</span>
+    <h1>Watch how to renew and manage your benefits.</h1>
+    <p>Step-by-step video walkthroughs from BenefitsCal — the official California benefits portal. Every video below is produced by BenefitsCal (a service of the California Department of Health Care Services) and shared here as educational community support.</p>
+  </div>
+</section>
+
+<section class="section" style="padding-top:26px">
+  <div class="wrap">
+
+    <div class="attribution reveal">
+      <div class="lbl">Attribution notice</div>
+      <h3>These videos are not our content. They are official tutorials by BenefitsCal and LA County DPSS.</h3>
+      <p>AccessMed California is <b>not the producer, owner, or publisher</b> of any video below. We embed the tutorials directly from the official BenefitsCal and Los Angeles County DPSS YouTube channels so you can access them in one place. For questions about a specific video, contact the publisher directly. For account-specific questions, contact your county Medi-Cal office or the DHCS Helpline at <a href="tel:8005415555">(800) 541-5555</a>.</p>
+      <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:8px">
+        <a href="https://www.youtube.com/@benefitscal9356" target="_blank" rel="noopener" class="channel-tag">
+          <svg><use href="#ytIcon"/></svg>
+          youtube.com/@benefitscal9356
+        </a>
+        <a href="https://www.youtube.com/@LACountyDPSS" target="_blank" rel="noopener" class="channel-tag">
+          <svg><use href="#ytIcon"/></svg>
+          youtube.com/@LACountyDPSS
+        </a>
+      </div>
+    </div>
+
+    <div class="tabs" role="tablist" id="tabs">
+      <button class="active" data-panel="renewals" role="tab">Medi-Cal Renewals <span class="count">3</span></button>
+      <button data-panel="getting-started" role="tab">Getting Started on BenefitsCal <span class="count">3</span></button>
+      <button data-panel="account" role="tab">Managing Your Account <span class="count">3</span></button>
+    </div>
+
+    <div class="vid-panel active" data-panel="renewals" role="tabpanel"><div class="vid-grid" id="grid-renewals"></div></div>
+    <div class="vid-panel" data-panel="getting-started" role="tabpanel"><div class="vid-grid" id="grid-getting-started"></div></div>
+    <div class="vid-panel" data-panel="account" role="tabpanel"><div class="vid-grid" id="grid-account"></div></div>
+
+    <div class="extra reveal">
+      <h3>Looking for more?</h3>
+      <p>BenefitsCal publishes additional tutorials on their official YouTube channel and Help Center. Both are free and always the most up-to-date source for step-by-step guidance.</p>
+      <ul>
+        <li>→ <a href="https://www.youtube.com/@benefitscal9356" target="_blank" rel="noopener">BenefitsCal YouTube channel</a> — the primary source for platform tutorials</li>
+        <li>→ <a href="https://www.youtube.com/@LACountyDPSS" target="_blank" rel="noopener">LA County DPSS YouTube channel</a> — additional Medi-Cal renewal walkthroughs</li>
+        <li>→ <a href="https://benefitscal.com/Help/how-to-videos/HCVID" target="_blank" rel="noopener">BenefitsCal Help Center video library</a></li>
+        <li>→ <a href="https://benefitscal.com" target="_blank" rel="noopener">BenefitsCal.com</a> — the official portal to apply, renew, and manage your case</li>
+      </ul>
+    </div>
+
+    <div class="legal">
+      <h4>Attribution &amp; Copyright</h4>
+      <p>All video content on this page is © BenefitsCal / the California Department of Health Care Services / Los Angeles County DPSS, as applicable. Videos are embedded via YouTube's official embed player under YouTube's <a href="https://www.youtube.com/t/terms" target="_blank" rel="noopener" style="color:var(--teal-d);text-decoration:underline">Terms of Service</a>.</p>
+      <p><b>AccessMed California does not produce, own, host, modify, or claim any of the video content above.</b> We do not receive any compensation for embedding these videos. We include them here as free educational community support.</p>
+      <p>If you are a copyright holder and would like a video removed or credit adjusted, please contact <a href="mailto:accessmedcalifornia@gmail.com" style="color:var(--teal-d);text-decoration:underline">accessmedcalifornia@gmail.com</a> and we will act promptly.</p>
+    </div>
+
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="fgrid">
+      <div>
+        <a href="index.html" class="logo" style="margin-bottom:10px">
+          <svg class="logo-svg" viewBox="0 0 100 100" style="background:#fff;border-radius:50%"><use href="#amcLogo"/></svg>
+          <div class="logo-text">
+            <div class="row" style="color:#fff"><span style="color:#fff">Access</span><span style="color:var(--sage-l)">Med</span><span style="color:#fff">California</span></div>
+            <div class="sub" style="color:#a3b3c7">Improving Access · Building Awareness</div>
+          </div>
+        </a>
+        <p class="fabout">A student-founded organization helping California residents understand and complete Medi-Cal renewals.</p>
+      </div>
+      <div>
+        <h4>Explore</h4>
+        <a href="index.html">Home</a>
+        <a href="mission.html">Mission</a>
+        <a href="tools.html">Tools</a>
+        <a href="videos.html">Videos</a>
+        <a href="blog.html">Blog</a>
+        <a href="impact.html">Impact</a>
+      </div>
+      <div>
+        <h4>Engage</h4>
+        <a href="help.html">How to Help</a>
+        <a href="index.html#remind">Renewal reminders</a>
+        <a href="mailto:accessmedcalifornia@gmail.com">Email us</a>
+      </div>
+      <div>
+        <h4>Official Medi-Cal</h4>
+        <p style="margin-bottom:10px;color:#a3b3c7;font-size:13.5px">DHCS Helpline: <a href="tel:8005415555" style="color:#fff;font-weight:600">(800) 541-5555</a><br>TTY: 711 (California Relay)<br>Portal: <a href="https://benefitscal.com" style="color:#fff;font-weight:600" target="_blank" rel="noopener">BenefitsCal.com</a></p>
+        <div class="fhotline">⚠ Renewal is always free. Report Medi-Cal fraud: (800) 822-6222.</div>
+      </div>
+    </div>
+    <div class="fbottom">
+      AccessMed California is an independent organization. We are not affiliated with the State of California, DHCS, BenefitsCal, or any county agency. Video content embedded on this site is the property of its respective producers.
+      <br><br>© 2026 AccessMed California · accessmedcalifornia@gmail.com
+    </div>
+  </div>
+</footer>
+
+<script>
+/* ==== Video data ==== */
+/* All video IDs verified via YouTube oEmbed on 2026-06 — every entry below returns a valid public embed. */
+const VIDEOS = {
+  'renewals': [
+    {id:'a0a08XsGXdI', title:'Medi-Cal Renewals', desc:'A full walkthrough of submitting your Medi-Cal renewal on BenefitsCal — where to find your renewal, what the forms look like, and how to submit.', by:'LA County DPSS'},
+    {id:'RfFhCZsSAQc', title:'How to Submit a Medi-Cal Renewal', desc:'The official BenefitsCal walkthrough for submitting your renewal — step-by-step through the online submission flow.', by:'BenefitsCal'},
+    {id:'PLykjHGgkk3UaMKCl5nCOen8eADHLcXZ8M', title:'How to Complete Your Medi-Cal Renewal (playlist)', desc:'A 6-video webinar series covering the whole Medi-Cal renewal process — using BenefitsCal or the paper renewal forms.', by:'LA County DPSS', playlist:true}
+  ],
+  'getting-started': [
+    {id:'vGI5hQDEQcs', title:'How to Apply for Benefits on BenefitsCal', desc:'Overview of how BenefitsCal works for applying to CalWORKs, CalFresh, and Medi-Cal. Good starting point if you\'re new to the platform.', by:'LA County DPSS'},
+    {id:'97lJSdirEow', title:'Customer Dashboard Overview', desc:'A tour of the BenefitsCal dashboard once you\'re logged in — where to see your case, messages, appointments, and documents.', by:'BenefitsCal'},
+    {id:'BUSDeK52T8g', title:'Link Your Account to Your Case', desc:'Already have Medi-Cal but no online account yet? This shows how to connect your BenefitsCal account to your existing case number.', by:'LA County DPSS'}
+  ],
+  'account': [
+    {id:'A0SatEVTW_g', title:'How to Upload a Document', desc:'If your county has asked for additional documents, this walks through uploading them straight from your BenefitsCal dashboard.', by:'BenefitsCal'},
+    {id:'VWm-N1OV2Xk', title:'How to Report a Change', desc:'Moved? New job? New household member? This shows exactly how to report life changes to your county through BenefitsCal.', by:'BenefitsCal'},
+    {id:'u2RoW24nEfc', title:'How to Reset a Password', desc:'Locked out of your BenefitsCal account? Quick walkthrough of the password reset flow.', by:'BenefitsCal'}
+  ]
+};
+
+/* ==== Render cards with click-to-play thumbnails ====
+   Thumbnails come from i.ytimg.com (free, no API key, always works).
+   Iframe loads only after user clicks — reliable everywhere including file:// preview.
+   "Watch on YouTube" fallback link always visible. */
+/* Channel handle map — links each author to their actual YouTube channel */
+const CHANNEL = {
+  'BenefitsCal': 'https://www.youtube.com/@benefitscal9356',
+  'LA County DPSS': 'https://www.youtube.com/@LACountyDPSS'
+};
+
+function renderCards(cat){
+  const target = document.getElementById('grid-'+cat);
+  const vids = VIDEOS[cat];
+  target.innerHTML = vids.map(v=>{
+    const isPl = !!v.playlist;
+    // Playlist thumbnail defaults to Medi-Cal Renewals thumbnail
+    const thumbId = isPl ? 'a0a08XsGXdI' : v.id;
+    const thumbUrl = `https://i.ytimg.com/vi/${thumbId}/hqdefault.jpg`;
+    const ytLink = isPl
+      ? `https://www.youtube.com/playlist?list=${v.id}`
+      : `https://www.youtube.com/watch?v=${v.id}`;
+    const badge = isPl ? '<span class="yt-badge">PLAYLIST · 6 videos</span>' : '';
+    const channelLink = CHANNEL[v.by] || 'https://www.youtube.com/@benefitscal9356';
+    return `
+      <div class="vid-card">
+        <div class="vid-frame" data-id="${v.id}" ${isPl?'data-playlist="true"':''} role="button" tabindex="0" aria-label="Play ${v.title}">
+          <img src="${thumbUrl}" alt="${v.title} thumbnail" loading="lazy"
+               onerror="this.onerror=null;this.src='https://i.ytimg.com/vi/${thumbId}/mqdefault.jpg';">
+          ${badge}
+          <button class="play-btn" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
+        </div>
+        <div class="vid-body">
+          <h4>${v.title}</h4>
+          <p>${v.desc}</p>
+          <div class="vid-meta">
+            <span class="vid-credit"><svg><use href="#ytIcon"/></svg>By <a href="${channelLink}" target="_blank" rel="noopener">${v.by}</a></span>
+            <a href="${ytLink}" target="_blank" rel="noopener" class="vid-external">Watch on YouTube <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg></a>
+          </div>
+        </div>
+      </div>`;
+  }).join('');
+
+  // Wire click-to-play
+  target.querySelectorAll('.vid-frame').forEach(el=>{
+    const play = ()=> loadPlayer(el);
+    el.addEventListener('click', play);
+    el.addEventListener('keypress', e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();play();}});
+  });
+}
+
+function loadPlayer(el){
+  const id = el.dataset.id;
+  const isPl = el.dataset.playlist === 'true';
+  const src = isPl
+    ? `https://www.youtube.com/embed/videoseries?list=${id}&autoplay=1&rel=0`
+    : `https://www.youtube.com/embed/${id}?autoplay=1&rel=0&modestbranding=1`;
+  el.innerHTML = `<iframe src="${src}" title="Video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
+  el.style.cursor = 'default';
+}
+
+/* Render all three panels */
+Object.keys(VIDEOS).forEach(renderCards);
+
+/* ==== Tab switching ==== */
+document.querySelectorAll('#tabs button').forEach(b=>{
+  b.addEventListener('click',()=>{
+    const p=b.dataset.panel;
+    document.querySelectorAll('#tabs button').forEach(x=>x.classList.toggle('active',x===b));
+    document.querySelectorAll('.vid-panel').forEach(x=>x.classList.toggle('active',x.dataset.panel===p));
+    try{history.replaceState(null,'','#'+p);}catch(_){}
+  });
+});
+if(location.hash){
+  const p=location.hash.slice(1);
+  const btn=document.querySelector(`#tabs button[data-panel="${p}"]`);
+  if(btn)btn.click();
+}
+
+/* Scroll reveal */
+const revObs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');revObs.unobserve(e.target);}}),{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>revObs.observe(el));
+
+/* Hamburger */
+document.getElementById('hamBtn')?.addEventListener('click',e=>{e.stopPropagation();document.getElementById('mainNav').classList.toggle('open');});
+document.addEventListener('click',e=>{if(!e.target.closest('#mainNav')&&!e.target.closest('#hamBtn'))document.getElementById('mainNav')?.classList.remove('open');});
+
+/* Language buttons */
+document.querySelectorAll('#langBar button').forEach(b=>b.addEventListener('click',()=>{
+  try{localStorage.setItem('amcLang',b.dataset.lang);}catch(_){}
+  if(b.dataset.lang!=='en')location.href='index.html?lang='+b.dataset.lang;
+  else{document.querySelectorAll('#langBar button').forEach(x=>x.classList.remove('active'));b.classList.add('active');}
+}));
+try{const saved=localStorage.getItem('amcLang');if(saved){document.querySelectorAll('#langBar button').forEach(x=>x.classList.toggle('active',x.dataset.lang===saved));}}catch(_){}
+</script>
+</body>
+</html>

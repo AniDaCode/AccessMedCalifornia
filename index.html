@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<meta name="description" content="AccessMed California is a organization that helps Californians renew their Medi-Cal coverage. Free guidance in 9 languages.">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AccessMed California — Keep Your Medi-Cal Coverage</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+Arabic:wght@500;700&family=Noto+Sans+Gurmukhi:wght@500;700&family=Noto+Sans+Devanagari:wght@500;700&family=Noto+Sans+KR:wght@500;700&family=Noto+Sans+SC:wght@500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#1c3a5e; --navy-d:#122947; --navy-l:#e8eff5; --navy-50:#f4f7fa;
+  --teal:#2ca8a8; --teal-d:#1f7a7a; --teal-l:#dff0f0;
+  --sage:#8dc63f; --sage-d:#6ba832; --sage-l:#eef7dc;
+  --amber:#e0930c; --amber-l:#fef3d5;
+  --ink:#15243a; --ink-2:#3d4f6a; --muted:#66768a; --muted-2:#95a3b5;
+  --line:#e6ecf1; --line-2:#f0f3f6; --bg:#fafbfc; --white:#fff;
+  --radius:14px; --radius-lg:20px;
+  --shadow-sm:0 2px 8px rgba(20,54,95,.06);
+  --shadow:0 6px 24px rgba(20,54,95,.09);
+  --shadow-lg:0 16px 48px rgba(20,54,95,.15);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:Georgia,'Times New Roman',serif;color:var(--ink);background:var(--bg);line-height:1.6;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+[lang="ar"] body,body[dir="rtl"]{font-family:'Noto Sans Arabic','Inter',sans-serif}
+[lang="pa"] body{font-family:'Noto Sans Gurmukhi','Inter',sans-serif}
+[lang="hi"] body{font-family:'Noto Sans Devanagari','Inter',sans-serif}
+[lang="ko"] body{font-family:'Noto Sans KR','Inter',sans-serif}
+[lang="zh"] body{font-family:'Noto Sans SC','Inter',sans-serif}
+img,svg{max-width:100%;display:block}
+/* Georgia body override for forms */
+input,select,textarea,button{font-family:'Inter',system-ui,sans-serif}
+.nav a,nav.links a{font-family:'Inter',system-ui,sans-serif}
+a{color:inherit;text-decoration:none}
+
+.wrap{max-width:1120px;margin:0 auto;padding:0 22px}
+
+.btn{display:inline-flex;align-items:center;gap:8px;font-family:inherit;font-weight:600;font-size:15.5px;padding:13px 22px;border-radius:8px;border:0;cursor:pointer;transition:all .18s ease}
+.btn-primary{background:var(--navy);color:#fff}
+.btn-primary:hover{background:var(--navy-d);transform:translateY(-1px)}
+.btn-secondary{background:var(--teal);color:#fff}
+.btn-secondary:hover{background:var(--teal-d);transform:translateY(-1px)}
+.btn-ghost{background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,.4)}
+.btn-ghost:hover{background:rgba(255,255,255,.1);border-color:#fff}
+.btn-outline{background:#fff;color:var(--navy);border:1.5px solid var(--navy-l)}
+.btn-outline:hover{border-color:var(--navy);background:var(--navy-50)}
+.btn-lg{font-size:16.5px;padding:15px 28px}
+
+.eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--teal-d)}
+.eyebrow::before{content:"";width:24px;height:1.5px;background:var(--teal);border-radius:1px}
+
+.section{padding:72px 0}
+.section h2{font-family:Georgia,'Times New Roman',serif;font-size:36px;font-weight:600;letter-spacing:-.025em;color:var(--navy);margin:12px 0 10px;line-height:1.14}
+.section .lead{font-size:17.5px;color:var(--muted);max-width:640px;line-height:1.6}
+.center{text-align:center}
+.center .lead{margin:0 auto}
+
+.reveal{opacity:0;transform:translateY(16px);transition:opacity .6s ease,transform .6s ease}
+.reveal.in{opacity:1;transform:none}
+.reveal.d2{transition-delay:.08s}.reveal.d3{transition-delay:.16s}
+
+/* Top bar */
+.topbar{background:var(--navy);color:#c8d3e0;font-size:13px}
+.topbar .wrap{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:8px 22px;flex-wrap:wrap}
+.topbar a{color:#fff;font-weight:600}
+.topbar a:hover{color:var(--sage-l)}
+
+
+
+/* Nav */
+header.nav{position:sticky;top:0;z-index:60;background:rgba(250,251,252,.96);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+header.nav .wrap{display:flex;align-items:center;justify-content:space-between;padding:14px 22px;gap:14px}
+.logo{display:flex;align-items:center;gap:10px}
+.logo-svg{width:36px;height:36px;flex-shrink:0}
+.logo-text{display:flex;flex-direction:column;line-height:1.1}
+.logo-text .row{font-family:Georgia,'Times New Roman',serif;font-weight:600;letter-spacing:-.01em;font-size:19px}
+.logo-text .row .a{color:var(--navy)}.logo-text .row .m{color:var(--teal)}.logo-text .row .c{color:var(--navy)}
+.logo-text .sub{font-size:9.5px;color:var(--muted);font-weight:500;letter-spacing:.06em;text-transform:uppercase;margin-top:2px}
+nav.links{display:flex;gap:2px;align-items:center}
+nav.links a{font-size:14.5px;font-weight:500;color:var(--ink-2);padding:8px 13px;border-radius:6px;transition:all .15s}
+nav.links a:hover{color:var(--navy);background:var(--navy-50)}
+nav.links a.btn{margin-left:6px}
+@media(max-width:920px){nav.links a:not(.btn){display:none}}
+
+/* Hero */
+.hero{background:var(--navy);color:#fff;position:relative;overflow:hidden}
+.hero::before{content:"";position:absolute;top:0;right:0;width:60%;height:100%;
+  background:radial-gradient(ellipse at 75% 40%,rgba(44,168,168,.28),transparent 60%);
+  pointer-events:none}
+.hero::after{content:"";position:absolute;bottom:-100px;left:-80px;width:400px;height:400px;
+  background:radial-gradient(circle,rgba(141,198,63,.15),transparent 65%);
+  pointer-events:none}
+.hero .wrap{position:relative;padding:80px 22px 92px;display:grid;grid-template-columns:1.2fr .8fr;gap:60px;align-items:center}
+@media(max-width:920px){.hero .wrap{grid-template-columns:1fr;padding:56px 22px 68px;gap:40px}}
+.hero .eyebrow{color:var(--sage-l)}
+.hero .eyebrow::before{background:var(--sage-l)}
+.hero h1{font-family:Georgia,'Times New Roman',serif;font-size:52px;line-height:1.02;font-weight:600;letter-spacing:-.035em;margin:16px 0 18px;max-width:640px}
+.hero h1 em{color:var(--sage-l);font-style:italic;font-weight:500}
+@media(max-width:920px){.hero h1{font-size:40px}}
+.hero p.sub{font-size:19px;color:#d0dae7;max-width:520px;line-height:1.55}
+.hero .cta-row{display:flex;gap:12px;margin-top:28px;flex-wrap:wrap}
+.hero .trust{margin-top:34px;display:flex;gap:34px;flex-wrap:wrap}
+.hero .trust > div{display:flex;flex-direction:column;gap:2px}
+.hero .trust b{color:#fff;font-size:22px;font-weight:700;font-variant-numeric:tabular-nums}
+.hero .trust span{color:#a3b3c7;font-size:13px}
+
+/* Hero card visual */
+.hero-card{background:#fff;color:var(--ink);border-radius:16px;padding:22px;box-shadow:var(--shadow-lg);max-width:360px;margin-left:auto}
+.hero-card .hcH{display:flex;align-items:center;gap:9px;font-size:13px;color:var(--muted);font-weight:600;margin-bottom:12px}
+.hero-card .hcH .dot{width:8px;height:8px;border-radius:50%;background:var(--sage);box-shadow:0 0 0 3px var(--sage-l)}
+.hero-card h4{font-family:Georgia,'Times New Roman',serif;font-size:19px;color:var(--navy);font-weight:600;margin-bottom:10px;line-height:1.25}
+.hero-card ul{list-style:none}
+.hero-card ul li{padding:9px 0;border-bottom:1px solid var(--line);font-size:14.5px;color:var(--ink-2);display:flex;align-items:center;gap:10px}
+.hero-card ul li:last-child{border-bottom:0}
+.hero-card ul li .n{width:22px;height:22px;border-radius:50%;background:var(--navy-l);color:var(--navy);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:12px;flex-shrink:0}
+@media(max-width:920px){.hero-card{margin:0 auto;max-width:380px}}
+
+/* Where to start tiles */
+.tiles{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:38px}
+@media(max-width:820px){.tiles{grid-template-columns:1fr}}
+.tile{background:#fff;border:1px solid var(--line);border-radius:var(--radius-lg);padding:28px;transition:all .2s ease;display:flex;flex-direction:column;text-align:left;position:relative}
+.tile:hover{transform:translateY(-4px);box-shadow:var(--shadow);border-color:var(--teal-l)}
+.tile .ic{width:44px;height:44px;border-radius:11px;display:flex;align-items:center;justify-content:center;margin-bottom:16px}
+.tile.t1 .ic{background:var(--navy-l);color:var(--navy)}
+.tile.t2 .ic{background:var(--teal-l);color:var(--teal-d)}
+.tile.t3 .ic{background:var(--sage-l);color:var(--sage-d)}
+.tile h3{font-family:Georgia,'Times New Roman',serif;font-size:20px;color:var(--navy);font-weight:600;letter-spacing:-.01em;margin-bottom:6px}
+.tile p{font-size:14.5px;color:var(--muted);line-height:1.6;flex:1;margin-bottom:14px}
+.tile .arrow{font-size:14px;color:var(--teal-d);font-weight:600;display:inline-flex;align-items:center;gap:6px;transition:gap .18s}
+.tile:hover .arrow{gap:11px}
+
+/* Stats strip */
+.stats{background:#fff;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:44px 0}
+.stats-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;text-align:center}
+@media(max-width:780px){.stats-grid{grid-template-columns:1fr}}
+.stat .num{font-family:Georgia,'Times New Roman',serif;font-size:44px;font-weight:600;color:var(--navy);letter-spacing:-.02em;line-height:1;font-variant-numeric:tabular-nums}
+.stat .lbl{font-size:14px;color:var(--muted);font-weight:500;margin-top:8px;letter-spacing:.02em}
+
+/* 3-step */
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:32px;margin-top:38px;counter-reset:s}
+@media(max-width:820px){.steps{grid-template-columns:1fr;gap:22px}}
+.step{position:relative;padding-top:14px}
+.step::before{counter-increment:s;content:counter(s);font-family:Georgia,'Times New Roman',serif;font-size:60px;font-weight:600;color:var(--teal-l);line-height:.8;letter-spacing:-.03em;display:block;margin-bottom:12px}
+.step h4{font-family:Georgia,'Times New Roman',serif;font-size:19px;color:var(--navy);font-weight:600;margin-bottom:6px}
+.step p{font-size:14.8px;color:var(--muted);line-height:1.65}
+
+/* Reminder signup */
+.remind{padding:70px 0;background:linear-gradient(180deg,var(--bg),var(--navy-50))}
+.remind-box{background:#fff;border:1px solid var(--line);border-radius:var(--radius-lg);padding:38px;display:grid;grid-template-columns:1fr 1fr;gap:38px;align-items:center;box-shadow:var(--shadow-sm)}
+@media(max-width:780px){.remind-box{grid-template-columns:1fr;padding:28px}}
+.remind-box h3{font-family:Georgia,'Times New Roman',serif;font-size:26px;color:var(--navy);font-weight:600;line-height:1.2;margin-bottom:8px;letter-spacing:-.02em}
+.remind-box p{color:var(--muted);font-size:15px;line-height:1.65}
+.remind-box .privacy{font-size:12.5px;color:var(--muted-2);margin-top:14px;padding:10px 14px;background:var(--bg);border-radius:8px;border-left:2px solid var(--teal)}
+.remind-form label{font-size:13px;color:var(--ink-2);font-weight:600;display:block;margin-bottom:5px;margin-top:12px}
+.remind-form label:first-child{margin-top:0}
+.remind-form input,.remind-form select{width:100%;font-family:inherit;font-size:15px;padding:11px 13px;border:1.5px solid var(--line);border-radius:8px;background:#fff;color:var(--ink);transition:border-color .15s}
+.remind-form input:focus,.remind-form select:focus{outline:0;border-color:var(--teal)}
+.remind-form button{width:100%;background:var(--navy);color:#fff;font-weight:600;border:0;border-radius:8px;padding:13px;font-size:15px;cursor:pointer;font-family:inherit;margin-top:14px;transition:background .15s}
+.remind-form button:hover{background:var(--navy-d)}
+.remind-success{display:none;background:var(--sage-l);color:#2a4a10;padding:12px 14px;border-radius:8px;font-size:14px;font-weight:600;margin-top:10px;border-left:3px solid var(--sage)}
+.remind-success.show{display:block}
+
+/* Contact CTA */
+.contact-band{background:var(--navy);color:#fff;border-radius:var(--radius-lg);padding:44px 40px;text-align:center;position:relative;overflow:hidden}
+.contact-band::before{content:"";position:absolute;top:0;right:0;width:50%;height:100%;background:radial-gradient(ellipse at right,rgba(44,168,168,.2),transparent 70%);pointer-events:none}
+.contact-band h2{color:#fff;font-size:28px;position:relative;z-index:2}
+.contact-band p{color:#c8d3e0;max-width:520px;margin:8px auto 22px;font-size:16px;position:relative;z-index:2}
+.contact-band .cta-row{position:relative;z-index:2;display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+
+/* Footer */
+footer{background:var(--navy-d);color:#a3b3c7;font-size:14px;padding:44px 0 22px}
+footer .fgrid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1.2fr;gap:32px}
+@media(max-width:780px){footer .fgrid{grid-template-columns:1fr 1fr}}
+footer h4{color:#fff;font-size:14px;margin-bottom:12px;font-weight:600;letter-spacing:.04em;text-transform:uppercase}
+footer a{color:#a3b3c7;display:block;padding:3px 0;font-size:13.5px;transition:color .15s}
+footer a:hover{color:#fff}
+footer .fabout{max-width:280px;font-size:13.5px;line-height:1.6;margin-top:12px}
+.fhotline{background:rgba(224,147,12,.12);border:1px solid rgba(224,147,12,.3);border-radius:8px;padding:11px 13px;color:#f5c76e;font-size:13px;line-height:1.55}
+.fbottom{border-top:1px solid rgba(255,255,255,.08);margin-top:30px;padding-top:18px;font-size:12.5px;color:#7385a0;line-height:1.6}
+
+/* AI Assistant */
+.fab{position:fixed;bottom:20px;right:20px;z-index:90;display:flex;align-items:center;gap:9px;background:var(--navy);color:#fff;border:0;border-radius:999px;padding:13px 20px 13px 15px;font-weight:600;font-size:14px;cursor:pointer;box-shadow:var(--shadow);font-family:inherit;transition:all .18s}
+.fab:hover{background:var(--navy-d);transform:translateY(-2px);box-shadow:var(--shadow-lg)}
+[dir="rtl"] .fab{right:auto;left:20px}
+.fab .pulse{width:9px;height:9px;border-radius:50%;background:var(--sage);box-shadow:0 0 0 0 rgba(141,198,63,.6);animation:pulse 2s infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(141,198,63,.6)}70%{box-shadow:0 0 0 10px rgba(141,198,63,0)}100%{box-shadow:0 0 0 0 rgba(141,198,63,0)}}
+.chat{position:fixed;bottom:20px;right:20px;z-index:95;width:380px;max-width:calc(100vw - 20px);height:560px;max-height:calc(100vh - 40px);background:#fff;border-radius:16px;box-shadow:var(--shadow-lg);display:none;flex-direction:column;overflow:hidden;border:1px solid var(--line)}
+[dir="rtl"] .chat{right:auto;left:20px}
+.chat.open{display:flex}
+.chat-head{background:var(--navy);color:#fff;padding:15px 18px;display:flex;align-items:center;gap:10px}
+.chat-head .av{width:36px;height:36px;border-radius:9px;background:var(--teal);display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:700}
+.chat-head b{font-size:14.5px;display:block}
+.chat-head span{font-size:11.5px;color:#c8d3e0}
+.chat-head .x{margin-left:auto;background:rgba(255,255,255,.14);border:0;color:#fff;width:28px;height:28px;border-radius:7px;cursor:pointer;font-size:14px;font-family:inherit}
+.chat-body{flex:1;overflow-y:auto;padding:16px;background:var(--navy-50);display:flex;flex-direction:column;gap:10px}
+.msg{max-width:86%;padding:10px 13px;border-radius:12px;font-size:14px;line-height:1.55}
+.msg.bot{background:#fff;border:1px solid var(--line);border-bottom-left-radius:3px;align-self:flex-start}
+.msg.user{background:var(--navy);color:#fff;border-bottom-right-radius:3px;align-self:flex-end}
+.msg.bot a{color:var(--teal-d);font-weight:600;text-decoration:underline}
+.chips{display:flex;flex-wrap:wrap;gap:6px;padding:9px 14px;background:var(--navy-50);border-top:1px solid var(--line)}
+.chip{font-size:12.5px;font-weight:500;background:#fff;border:1px solid var(--line);color:var(--navy);padding:6px 10px;border-radius:999px;cursor:pointer;font-family:inherit}
+.chip:hover{background:var(--navy-l)}
+.chat-input{display:flex;gap:7px;padding:11px 14px;border-top:1px solid var(--line);background:#fff}
+.chat-input input{flex:1;border:1.5px solid var(--line);border-radius:999px;padding:10px 14px;font-size:14px;font-family:inherit}
+.chat-input input:focus{outline:0;border-color:var(--teal)}
+.chat-input button{background:var(--navy);border:0;color:#fff;width:40px;height:40px;border-radius:50%;cursor:pointer;font-size:16px;flex:0 0 40px;font-family:inherit}
+.typing{display:flex;gap:4px;padding:12px 14px}
+.typing span{width:6px;height:6px;border-radius:50%;background:var(--muted-2);animation:bounce 1.2s infinite}
+.typing span:nth-child(2){animation-delay:.18s}
+.typing span:nth-child(3){animation-delay:.36s}
+@keyframes bounce{0%,60%,100%{transform:translateY(0)}30%{transform:translateY(-6px)}}
+.disc{font-size:11px;color:var(--muted-2);text-align:center;padding:8px 14px;background:#fff;border-top:1px solid var(--line);line-height:1.4}
+
+/* Language button bar */
+.lang{display:flex;gap:3px;flex-wrap:wrap;align-items:center}
+.lang button{background:transparent;border:1px solid rgba(255,255,255,.16);color:#fff;font-size:11.5px;font-weight:500;padding:3px 8px;border-radius:5px;cursor:pointer;font-family:inherit;transition:all .15s}
+.lang button:hover{background:rgba(255,255,255,.14);border-color:rgba(255,255,255,.3)}
+.lang button.active{background:var(--sage);color:var(--navy-d);border-color:var(--sage);font-weight:700}
+[lang="ar"] body,body[dir="rtl"]{font-family:Georgia,'Times New Roman',serif}
+
+/* Mobile hamburger */
+.hamburger{display:none;background:none;border:0;font-size:22px;cursor:pointer;color:var(--navy);padding:4px 8px;font-family:inherit;line-height:1}
+@media(max-width:920px){
+  .hamburger{display:block}
+  nav.links{position:absolute;top:100%;right:0;background:#fff;border:1px solid var(--line);border-top:0;border-radius:0 0 12px 12px;flex-direction:column;padding:8px;box-shadow:var(--shadow);display:none;min-width:200px;align-items:stretch}
+  nav.links.open{display:flex}
+  nav.links a{padding:11px 14px;font-size:14.5px;width:100%;border-radius:6px}
+}
+</style>
+</head>
+<body>
+
+<!-- LOGO SVG -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><symbol id="amcLogo" viewBox="0 0 100 100"><circle cx="50" cy="50" r="46" fill="#fff" stroke="#1c3a5e" stroke-width="4"/><rect x="22" y="28" width="3.5" height="36" fill="#1c3a5e"/><rect x="74.5" y="28" width="3.5" height="36" fill="#1c3a5e"/><rect x="20" y="26" width="7.5" height="3" fill="#1c3a5e"/><rect x="72.5" y="26" width="7.5" height="3" fill="#1c3a5e"/><rect x="20" y="42" width="7.5" height="2" fill="#1c3a5e"/><rect x="72.5" y="42" width="7.5" height="2" fill="#1c3a5e"/><rect x="20" y="52" width="7.5" height="2" fill="#1c3a5e"/><rect x="72.5" y="52" width="7.5" height="2" fill="#1c3a5e"/><path d="M 25 32 Q 50 60 75 32" fill="none" stroke="#1c3a5e" stroke-width="2.2"/><rect x="13" y="62" width="74" height="3" fill="#1c3a5e"/><rect x="13" y="65" width="74" height="1.5" fill="#1c3a5e" opacity=".6"/><path d="M 33 72 Q 47 65 60 72 Q 62 76 55 78 L 33 78 Z" fill="#8dc63f"/><path d="M 14 78 Q 25 73 36 78 Q 50 84 64 77 Q 76 73 84 78 L 84 84 L 14 84 Z" fill="#2ca8a8"/></symbol></defs></svg>
+
+<!-- TOP BAR -->
+<div class="topbar">
+  <div class="wrap">
+    <div data-i18n="topHelp">Medi-Cal helpline: <a href="tel:8005415555">(800) 541-5555</a> · free</div>
+    <div class="lang" id="langBar">
+      <button data-lang="en" class="active">EN</button>
+      <button data-lang="es">ES</button>
+      <button data-lang="zh">中文</button>
+      <button data-lang="hi">हिन्दी</button>
+      <button data-lang="pa">ਪੰਜਾਬੀ</button>
+      <button data-lang="vi">Tiếng Việt</button>
+      <button data-lang="tl">Tagalog</button>
+      <button data-lang="ko">한국어</button>
+      <button data-lang="ar">العربية</button>
+    </div>
+  </div>
+</div>
+
+<!-- NAV -->
+<header class="nav">
+  <div class="wrap">
+    <a href="index.html" class="logo" aria-label="AccessMed California Home">
+      <svg class="logo-svg" viewBox="0 0 100 100"><use href="#amcLogo"/></svg>
+      <div class="logo-text">
+        <div class="row"><span class="a">Access</span><span class="m">Med</span><span class="c">California</span></div>
+        <div class="sub">Improving Access · Building Awareness</div>
+      </div>
+    </a>
+    <nav class="links" id="mainNav">
+      <a href="index.html" class="cur">Home</a>
+      <a href="mission.html">Mission</a>
+      <a href="tools.html">Tools</a>
+      <a href="tools.html#faq">Learn</a>
+      <a href="tools.html#counties">My County</a>
+      <a href="videos.html">Videos</a>
+      <a href="blog.html">Blog</a>
+      <a href="impact.html">Impact</a>
+      <a href="help.html">How to Help</a>
+    </nav>
+    <button class="hamburger" id="hamBtn" aria-label="Menu">☰</button>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="wrap">
+    <div>
+      <span class="eyebrow" data-i18n="heroTag">A California organization</span>
+      <h1 data-i18n="heroH1">Keep your Medi-Cal.<br><em>In your language.</em></h1>
+      <p class="sub" data-i18n="heroSub">Every year, California residents must renew their Medi-Cal coverage. We provide free, plain-language guidance to help you understand your renewal — in nine languages.</p>
+      <div class="cta-row">
+        <a href="tools.html#checker" class="btn btn-primary btn-lg" data-i18n="heroCta1">Check my renewal</a>
+        <a href="tools.html#counties" class="btn btn-ghost btn-lg" data-i18n="heroCta2">Find my county</a>
+      </div>
+      <div class="trust">
+        <div><b>9</b><span data-i18n="heroT1">languages supported</span></div>
+        <div><b>58</b><span data-i18n="heroT2">California counties</span></div>
+        <div><b>$0</b><span data-i18n="heroT3">always free</span></div>
+      </div>
+    </div>
+    <div class="hero-card">
+      <div class="hcH"><span class="dot"></span> <span data-i18n="hcTag">The 3-step renewal</span></div>
+      <h4 data-i18n="hcH">Most renewals take under 30 minutes online.</h4>
+      <ul>
+        <li><span class="n">1</span><span data-i18n="hc1">Watch for your renewal packet in the mail (yellow envelope)</span></li>
+        <li><span class="n">2</span><span data-i18n="hc2">Gather documents: ID, proof of income, address</span></li>
+        <li><span class="n">3</span><span data-i18n="hc3">Submit online at BenefitsCal.com before your due date</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- 3 TILES -->
+<section class="section">
+  <div class="wrap center reveal">
+    <span class="eyebrow" data-i18n="tilesTag">Where to start</span>
+    <h2 data-i18n="tilesH">Straightforward tools, not more paperwork.</h2>
+    <p class="lead" data-i18n="tilesLead">Three focused ways to get the help you need — designed for real families, tested with real questions.</p>
+  </div>
+  <div class="wrap reveal d2">
+    <div class="tiles">
+      <a href="tools.html#checker" class="tile t1">
+        <div class="ic"><svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg></div>
+        <h3 data-i18n="tile1H">Renewal Check</h3>
+        <p data-i18n="tile1P">A short questionnaire generates a personalized document checklist and clear next steps for your situation.</p>
+        <span class="arrow" data-i18n="tileGo">Start →</span>
+      </a>
+      <a href="tools.html#faq" class="tile t2">
+        <div class="ic"><svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg></div>
+        <h3 data-i18n="tile2H">Learn</h3>
+        <p data-i18n="tile2P">Plain-language FAQ, glossary of Medi-Cal terms, and myth-vs-fact cards to bust common confusion.</p>
+        <span class="arrow" data-i18n="tileGo">Start →</span>
+      </a>
+      <a href="tools.html#counties" class="tile t3">
+        <div class="ic"><svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg></div>
+        <h3 data-i18n="tile3H">My County</h3>
+        <p data-i18n="tile3P">All 58 California counties with verified phone numbers and how to renew where you live.</p>
+        <span class="arrow" data-i18n="tileGo">Start →</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- STATS STRIP -->
+<div class="stats">
+  <div class="wrap">
+    <div class="stats-grid">
+      <div class="stat"><div class="num">575+</div><div class="lbl" data-i18n="s1">People reached</div></div>
+      <div class="stat"><div class="num">25+</div><div class="lbl" data-i18n="s2">Awareness events</div></div>
+      <div class="stat"><div class="num">9</div><div class="lbl" data-i18n="s3">Languages supported</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- HOW IT WORKS -->
+<section class="section">
+  <div class="wrap center reveal">
+    <span class="eyebrow" data-i18n="howTag">How renewal works</span>
+    <h2 data-i18n="howH">Three steps between you and continuous coverage.</h2>
+  </div>
+  <div class="wrap reveal d2">
+    <div class="steps">
+      <div class="step">
+        <h4 data-i18n="hw1H">Watch for your packet</h4>
+        <p data-i18n="hw1P">Renewal notices arrive by mail in a yellow envelope, or in your BenefitsCal account. If you moved recently, update your address first.</p>
+      </div>
+      <div class="step">
+        <h4 data-i18n="hw2H">Gather documents</h4>
+        <p data-i18n="hw2P">Typically: photo ID, proof of income (pay stubs or benefit letters), and proof of California residence. Our Renewal Check builds a list for your situation.</p>
+      </div>
+      <div class="step">
+        <h4 data-i18n="hw3H">Submit before the due date</h4>
+        <p data-i18n="hw3P">The fastest way is online at BenefitsCal.com. You can also renew by phone, by mail, or in person at your county office.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REMINDER FORM (Netlify Forms enabled) -->
+<section class="remind" id="remind">
+  <div class="wrap reveal">
+    <div class="remind-box">
+      <div>
+        <span class="eyebrow" data-i18n="remTag">Free reminder</span>
+        <h3 style="margin-top:12px" data-i18n="remH">Get a reminder before your renewal is due.</h3>
+        <p data-i18n="remP">We'll send you one email or text 30 days before your renewal month, and another the week before. That's it — no marketing, no data sharing.</p>
+        <div class="privacy" data-i18n="remPrivacy">🔒 Your contact info is used only to send your renewal reminders. We never share or sell it. You can unsubscribe anytime.</div>
+      </div>
+      <form class="remind-form" name="renewal-reminders" method="POST" data-netlify="true" netlify-honeypot="bot-field" id="remForm">
+        <input type="hidden" name="form-name" value="renewal-reminders">
+        <p style="display:none"><label>Don't fill this out: <input name="bot-field"></label></p>
+        <label for="remChan" data-i18n="remLbl1">How should we reach you?</label>
+        <select name="channel" id="remChan" required>
+          <option value="email">Email</option>
+          <option value="sms">Text (SMS)</option>
+        </select>
+        <label for="remContact" data-i18n="remLbl2">Your email or phone</label>
+        <input type="text" name="contact" id="remContact" placeholder="you@example.com or (555) 555-5555" required>
+        <label for="remMonth" data-i18n="remLbl3">Your renewal month (best guess is fine)</label>
+        <input type="month" name="renewalMonth" id="remMonth" required>
+        <button type="submit" data-i18n="remBtn">Send me reminders</button>
+        <div class="remind-success" id="remOK" data-i18n="remOK">✓ You're signed up. We'll send your first reminder 30 days before your renewal month.</div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT CTA -->
+<section class="section" id="contact">
+  <div class="wrap reveal">
+    <div class="contact-band">
+      <span class="eyebrow" style="color:var(--sage-l)" data-i18n="contactTag">Get in touch</span>
+      <h2 style="margin-top:12px" data-i18n="contactH">Questions? Reach out — we respond within one business day.</h2>
+      <p data-i18n="contactP">For urgent Medi-Cal questions, call the official DHCS helpline at (800) 541-5555. For questions about our work, guidance in your language, or bringing an awareness event to your community, email us.</p>
+      <div class="cta-row">
+        <a href="mailto:accessmedcalifornia@gmail.com" class="btn btn-secondary btn-lg" data-i18n="contactCta1">Email AccessMed</a>
+        <a href="tel:8005415555" class="btn btn-ghost btn-lg" data-i18n="contactCta2">Call DHCS: (800) 541-5555</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="fgrid">
+      <div>
+        <a href="index.html" class="logo" style="margin-bottom:10px">
+          <svg class="logo-svg" viewBox="0 0 100 100" style="background:#fff;border-radius:50%"><use href="#amcLogo"/></svg>
+          <div class="logo-text">
+            <div class="row" style="color:#fff"><span style="color:#fff">Access</span><span style="color:var(--sage-l)">Med</span><span style="color:#fff">California</span></div>
+            <div class="sub" style="color:#a3b3c7">Improving Access · Building Awareness</div>
+          </div>
+        </a>
+        <p class="fabout" data-i18n="ftAbout">A student-founded California organization helping residents understand and complete Medi-Cal renewals.</p>
+      </div>
+      <div>
+        <h4 data-i18n="ftExplore">Explore</h4>
+        <a href="tools.html" data-i18n="navTools">Tools</a>
+        <a href="tools.html#faq" data-i18n="navLearn">Learn</a>
+        <a href="tools.html#counties" data-i18n="navCounty">My County</a>
+        <a href="blog.html" data-i18n="navBlog">Blog</a>
+        <a href="impact.html" data-i18n="navImpact">Impact</a>
+      </div>
+      <div>
+        <h4 data-i18n="ftLang">Languages</h4>
+        <a href="#" data-set-lang="en">English</a>
+        <a href="#" data-set-lang="es">Español</a>
+        <a href="#" data-set-lang="zh">中文</a>
+        <a href="#" data-set-lang="hi">हिन्दी</a>
+        <a href="#" data-set-lang="pa">ਪੰਜਾਬੀ</a>
+        <a href="#" data-set-lang="vi">Tiếng Việt</a>
+        <a href="#" data-set-lang="tl">Tagalog</a>
+        <a href="#" data-set-lang="ko">한국어</a>
+        <a href="#" data-set-lang="ar">العربية</a>
+      </div>
+      <div>
+        <h4 data-i18n="ftContact">Official Medi-Cal</h4>
+        <p style="margin-bottom:10px;color:#a3b3c7;font-size:13.5px">DHCS Helpline: <a href="tel:8005415555" style="color:#fff;font-weight:600">(800) 541-5555</a><br>TTY: 711 (California Relay)<br>Portal: <a href="https://benefitscal.com" style="color:#fff;font-weight:600" target="_blank" rel="noopener">BenefitsCal.com</a></p>
+        <div class="fhotline" data-i18n="ftFraud">⚠ Renewal is always free. Report Medi-Cal fraud: (800) 822-6222.</div>
+      </div>
+    </div>
+    <div class="fbottom" data-i18n="ftDisc">
+      AccessMed California is an independent organization. We are not affiliated with the State of California or the Department of Health Care Services (DHCS). We provide free educational guidance only and do not process, approve, or deny Medi-Cal applications or renewals. For decisions about your case, always contact your county office or DHCS directly.
+      <br><br>© 2026 AccessMed California · accessmedcalifornia@gmail.com
+    </div>
+  </div>
+</footer>
+
+<!-- AI ASSISTANT -->
+<button class="fab" id="fab"><span class="pulse"></span> <span data-i18n="fab">Ask AccessBot</span></button>
+<div class="chat" id="chat">
+  <div class="chat-head">
+    <div class="av">A</div>
+    <div><b>AccessBot</b><span data-i18n="botStatus">Renewal assistant · online</span></div>
+    <button class="x" id="chatX">✕</button>
+  </div>
+  <div class="chat-body" id="chatBody"></div>
+  <div class="chips" id="chips"></div>
+  <div class="chat-input">
+    <input type="text" id="chatInput" placeholder="Type your question…" autocomplete="off">
+    <button id="chatSend">→</button>
+  </div>
+  <div class="disc" data-i18n="botDisc">AccessBot provides general guidance only. For decisions about your case, contact your county or call (800) 541-5555.</div>
+</div>
+
+<script>
+const I18N = {
+  en:{},
+  es:{topHelp:'Línea Medi-Cal: <a href="tel:8005415555">(800) 541-5555</a> · gratis',navTools:"Herramientas",navLearn:"Aprender",navCounty:"Mi condado",navImpact:"Impacto",navBlog:"Blog",navHelp:"Obtener ayuda",heroTag:"Una organización sin fines de lucro de California",heroH1:"Mantenga su Medi-Cal.<br><em>En su idioma.</em>",heroSub:"Cada año, los residentes de California deben renovar su cobertura de Medi-Cal. Ofrecemos orientación gratuita en lenguaje sencillo — en nueve idiomas.",heroCta1:"Revisar mi renovación",heroCta2:"Encontrar mi condado",heroT1:"idiomas",heroT2:"condados de CA",heroT3:"siempre gratis",hcTag:"La renovación en 3 pasos",hcH:"La mayoría se renueva en línea en menos de 30 minutos.",hc1:"Espere su paquete de renovación (sobre amarillo)",hc2:"Reúna documentos: ID, prueba de ingresos, dirección",hc3:"Envíelo en línea en BenefitsCal.com antes de la fecha",tilesTag:"Por dónde empezar",tilesH:"Herramientas claras, no más papeleo.",tilesLead:"Tres formas enfocadas de obtener la ayuda que necesita.",tile1H:"Revisar renovación",tile1P:"Un cuestionario breve genera una lista personalizada de documentos y pasos claros.",tile2H:"Aprender",tile2P:"Preguntas frecuentes en lenguaje sencillo, glosario y tarjetas de mito vs realidad.",tile3H:"Mi condado",tile3P:"Los 58 condados de California con números de teléfono verificados.",tileGo:"Comenzar →",s1:"Personas alcanzadas",s2:"Eventos de concienciación",s3:"Idiomas disponibles",howTag:"Cómo funciona la renovación",howH:"Tres pasos entre usted y la cobertura continua.",hw1H:"Espere su paquete",hw1P:"Los avisos de renovación llegan por correo en un sobre amarillo.",hw2H:"Reúna documentos",hw2P:"Identificación con foto, prueba de ingresos, prueba de residencia en California.",hw3H:"Envíelo antes de la fecha",hw3P:"La forma más rápida es en línea en BenefitsCal.com.",remTag:"Recordatorio gratuito",remH:"Reciba un recordatorio antes del vencimiento de su renovación.",remP:"Le enviaremos un correo o mensaje 30 días antes del mes de su renovación.",remPrivacy:"🔒 Su información se usa solo para enviar recordatorios. Nunca la compartimos ni vendemos.",remLbl1:"¿Cómo prefiere?",remLbl2:"Su correo o teléfono",remLbl3:"Su mes de renovación",remBtn:"Enviarme recordatorios",remOK:"✓ Está inscrito.",contactTag:"Contáctenos",contactH:"¿Preguntas? Escríbanos — respondemos en un día hábil.",contactP:"Para preguntas urgentes de Medi-Cal, llame a la línea oficial de DHCS al (800) 541-5555.",contactCta1:"Escríbanos",contactCta2:"Llamar a DHCS: (800) 541-5555",ftAbout:"Organización sin fines de lucro fundada por estudiantes que ayuda con las renovaciones de Medi-Cal.",ftExplore:"Explorar",ftLang:"Idiomas",ftContact:"Medi-Cal oficial",ftFraud:"⚠ La renovación siempre es gratis. Reporte fraude: (800) 822-6222.",ftDisc:"AccessMed California es una organización independiente. Solo brindamos orientación educativa gratuita.",fab:"Preguntar a AccessBot",botStatus:"Asistente · en línea",botDisc:"Para decisiones sobre su caso, contacte a su condado o llame al (800) 541-5555."},
+  hi:{topHelp:'Medi-Cal हेल्पलाइन: <a href="tel:8005415555">(800) 541-5555</a> · मुफ़्त',navTools:"उपकरण",navLearn:"जानें",navCounty:"मेरा काउंटी",navImpact:"प्रभाव",navBlog:"ब्लॉग",navHelp:"मदद लें",heroTag:"एक कैलिफ़ोर्निया गैर-लाभकारी संस्था",heroH1:"अपना Medi-Cal बनाए रखें।<br><em>अपनी भाषा में।</em>",heroSub:"हर साल, कैलिफ़ोर्निया निवासियों को Medi-Cal कवरेज नवीनीकृत करना पड़ता है। हम नौ भाषाओं में मुफ़्त सरल मार्गदर्शन प्रदान करते हैं।",heroCta1:"मेरा नवीनीकरण जांचें",heroCta2:"मेरा काउंटी खोजें",heroT1:"भाषाएँ",heroT2:"CA काउंटी",heroT3:"हमेशा मुफ़्त",hcTag:"3 चरणों में नवीनीकरण",hcH:"अधिकांश 30 मिनट से कम में ऑनलाइन नवीनीकरण करते हैं।",hc1:"अपना नवीनीकरण पैकेट (पीला लिफ़ाफ़ा) प्राप्त करें",hc2:"दस्तावेज़ इकट्ठा करें: ID, आय का प्रमाण, पता",hc3:"नियत तारीख से पहले BenefitsCal.com पर जमा करें",tilesTag:"कहाँ से शुरू करें",tilesH:"सीधे उपकरण, अधिक कागज़ी काम नहीं।",tilesLead:"मदद पाने के तीन केंद्रित तरीके।",tile1H:"नवीनीकरण जांच",tile1P:"एक छोटी प्रश्नावली एक व्यक्तिगत दस्तावेज़ सूची बनाती है।",tile2H:"जानें",tile2P:"सरल भाषा में FAQ, शब्दकोश, मिथक बनाम तथ्य।",tile3H:"मेरा काउंटी",tile3P:"सभी 58 CA काउंटी सत्यापित फ़ोन नंबरों के साथ।",tileGo:"शुरू करें →",s1:"पहुँचे लोग",s2:"जागरूकता कार्यक्रम",s3:"भाषाएँ",howTag:"नवीनीकरण कैसे काम करता है",howH:"आपके और निरंतर कवरेज के बीच तीन चरण।",hw1H:"अपने पैकेट का इंतज़ार करें",hw1P:"नवीनीकरण नोटिस पीले लिफ़ाफ़े में डाक से आते हैं।",hw2H:"दस्तावेज़ इकट्ठा करें",hw2P:"फोटो ID, आय का प्रमाण, कैलिफ़ोर्निया निवास का प्रमाण।",hw3H:"नियत तारीख से पहले जमा करें",hw3P:"सबसे तेज़ तरीका BenefitsCal.com पर है।",remTag:"मुफ़्त अनुस्मारक",remH:"नवीनीकरण से पहले अनुस्मारक पाएं।",remP:"नवीनीकरण महीने से 30 दिन पहले ईमेल या टेक्स्ट भेजेंगे।",remPrivacy:"🔒 आपकी जानकारी केवल अनुस्मारक के लिए है।",remLbl1:"कैसे संपर्क करें?",remLbl2:"ईमेल या फ़ोन",remLbl3:"नवीनीकरण महीना",remBtn:"अनुस्मारक भेजें",remOK:"✓ पंजीकृत।",contactTag:"संपर्क करें",contactH:"प्रश्न? लिखें — एक कार्यदिवस में जवाब।",contactP:"तत्काल के लिए DHCS (800) 541-5555 पर कॉल करें।",contactCta1:"ईमेल करें",contactCta2:"DHCS: (800) 541-5555",ftAbout:"छात्रों द्वारा स्थापित गैर-लाभकारी संस्था।",ftExplore:"खोजें",ftLang:"भाषाएँ",ftContact:"आधिकारिक Medi-Cal",ftFraud:"⚠ नवीनीकरण हमेशा मुफ़्त। धोखाधड़ी रिपोर्ट: (800) 822-6222.",ftDisc:"AccessMed California स्वतंत्र गैर-लाभकारी संस्था है। केवल शैक्षिक मार्गदर्शन।",fab:"AccessBot से पूछें",botStatus:"सहायक · ऑनलाइन",botDisc:"अपने केस के लिए, (800) 541-5555 पर कॉल करें।"},
+  pa:{topHelp:'Medi-Cal ਹੈਲਪਲਾਈਨ: <a href="tel:8005415555">(800) 541-5555</a> · ਮੁਫ਼ਤ',navTools:"ਸੰਦ",navLearn:"ਸਿੱਖੋ",navCounty:"ਮੇਰਾ ਕਾਊਂਟੀ",navImpact:"ਪ੍ਰਭਾਵ",navBlog:"ਬਲੌਗ",navHelp:"ਮਦਦ ਲਓ",heroTag:"ਇੱਕ ਕੈਲੀਫੋਰਨੀਆ ਗੈਰ-ਮੁਨਾਫ਼ਾ ਸੰਸਥਾ",heroH1:"ਆਪਣਾ Medi-Cal ਰੱਖੋ।<br><em>ਆਪਣੀ ਭਾਸ਼ਾ ਵਿੱਚ।</em>",heroSub:"ਹਰ ਸਾਲ, ਕੈਲੀਫੋਰਨੀਆ ਵਾਸੀਆਂ ਨੂੰ Medi-Cal ਨਵੀਨੀਕਰਨ ਕਰਨਾ ਪੈਂਦਾ ਹੈ। ਅਸੀਂ ਨੌਂ ਭਾਸ਼ਾਵਾਂ ਵਿੱਚ ਮੁਫ਼ਤ ਸਾਧਾਰਨ ਮਾਰਗਦਰਸ਼ਨ ਪ੍ਰਦਾਨ ਕਰਦੇ ਹਾਂ।",heroCta1:"ਮੇਰਾ ਨਵੀਨੀਕਰਨ ਚੈੱਕ ਕਰੋ",heroCta2:"ਮੇਰਾ ਕਾਊਂਟੀ ਲੱਭੋ",heroT1:"ਭਾਸ਼ਾਵਾਂ",heroT2:"CA ਕਾਊਂਟੀਆਂ",heroT3:"ਹਮੇਸ਼ਾ ਮੁਫ਼ਤ",hcTag:"3 ਕਦਮਾਂ ਵਿੱਚ ਨਵੀਨੀਕਰਨ",hcH:"ਜ਼ਿਆਦਾਤਰ 30 ਮਿੰਟ ਤੋਂ ਘੱਟ ਵਿੱਚ ਆਨਲਾਈਨ ਖਤਮ ਕਰਦੇ ਹਨ।",hc1:"ਆਪਣੇ ਨਵੀਨੀਕਰਨ ਪੈਕੇਟ (ਪੀਲਾ ਲਿਫ਼ਾਫ਼ਾ) ਦੀ ਉਡੀਕ ਕਰੋ",hc2:"ਦਸਤਾਵੇਜ਼ ਇਕੱਠੇ ਕਰੋ: ID, ਆਮਦਨ ਦਾ ਸਬੂਤ, ਪਤਾ",hc3:"ਨਿਯਤ ਮਿਤੀ ਤੋਂ ਪਹਿਲਾਂ BenefitsCal.com \'ਤੇ ਜਮ੍ਹਾਂ ਕਰੋ",tilesTag:"ਕਿੱਥੋਂ ਸ਼ੁਰੂ ਕਰੀਏ",tilesH:"ਸਿੱਧੇ ਸੰਦ, ਹੋਰ ਕਾਗਜ਼ੀ ਕੰਮ ਨਹੀਂ।",tilesLead:"ਮਦਦ ਲੈਣ ਦੇ ਤਿੰਨ ਕੇਂਦਰਿਤ ਤਰੀਕੇ।",tile1H:"ਨਵੀਨੀਕਰਨ ਚੈੱਕ",tile1P:"ਇੱਕ ਛੋਟੀ ਪ੍ਰਸ਼ਨਾਵਲੀ ਨਿੱਜੀ ਦਸਤਾਵੇਜ਼ ਸੂਚੀ ਬਣਾਉਂਦੀ ਹੈ।",tile2H:"ਸਿੱਖੋ",tile2P:"ਸਾਧਾਰਨ ਭਾਸ਼ਾ ਵਿੱਚ FAQ, ਸ਼ਬਦਾਵਲੀ, ਮਿਥਕ ਬਨਾਮ ਤੱਥ।",tile3H:"ਮੇਰਾ ਕਾਊਂਟੀ",tile3P:"ਸਾਰੇ 58 CA ਕਾਊਂਟੀ ਸਹੀ ਫੋਨ ਨੰਬਰਾਂ ਨਾਲ।",tileGo:"ਸ਼ੁਰੂ ਕਰੋ →",s1:"ਪਹੁੰਚੇ ਲੋਕ",s2:"ਜਾਗਰੂਕਤਾ ਸਮਾਗਮ",s3:"ਭਾਸ਼ਾਵਾਂ",howTag:"ਨਵੀਨੀਕਰਨ ਕਿਵੇਂ ਕੰਮ ਕਰਦਾ ਹੈ",howH:"ਤੁਹਾਡੇ ਅਤੇ ਲਗਾਤਾਰ ਕਵਰੇਜ ਵਿਚਕਾਰ ਤਿੰਨ ਕਦਮ।",hw1H:"ਆਪਣੇ ਪੈਕੇਟ ਦੀ ਉਡੀਕ ਕਰੋ",hw1P:"ਨਵੀਨੀਕਰਨ ਨੋਟਿਸ ਪੀਲੇ ਲਿਫ਼ਾਫ਼ੇ ਵਿੱਚ ਡਾਕ ਰਾਹੀਂ ਆਉਂਦੇ ਹਨ।",hw2H:"ਦਸਤਾਵੇਜ਼ ਇਕੱਠੇ ਕਰੋ",hw2P:"ਫੋਟੋ ID, ਆਮਦਨ ਦਾ ਸਬੂਤ, ਕੈਲੀਫੋਰਨੀਆ ਨਿਵਾਸ ਦਾ ਸਬੂਤ।",hw3H:"ਨਿਯਤ ਮਿਤੀ ਤੋਂ ਪਹਿਲਾਂ ਜਮ੍ਹਾਂ ਕਰੋ",hw3P:"ਸਭ ਤੋਂ ਤੇਜ਼ ਤਰੀਕਾ BenefitsCal.com \'ਤੇ ਹੈ।",remTag:"ਮੁਫ਼ਤ ਯਾਦ ਦਿਵਾਉਣ",remH:"ਨਵੀਨੀਕਰਨ ਤੋਂ ਪਹਿਲਾਂ ਯਾਦ ਦਿਵਾਉਣ ਪ੍ਰਾਪਤ ਕਰੋ।",remP:"ਨਵੀਨੀਕਰਨ ਮਹੀਨੇ ਤੋਂ 30 ਦਿਨ ਪਹਿਲਾਂ ਈਮੇਲ ਜਾਂ ਟੈਕਸਟ ਭੇਜਾਂਗੇ।",remPrivacy:"🔒 ਤੁਹਾਡੀ ਜਾਣਕਾਰੀ ਸਿਰਫ਼ ਯਾਦ ਦਿਵਾਉਣ ਲਈ।",remLbl1:"ਕਿਵੇਂ ਸੰਪਰਕ?",remLbl2:"ਈਮੇਲ ਜਾਂ ਫ਼ੋਨ",remLbl3:"ਨਵੀਨੀਕਰਨ ਮਹੀਨਾ",remBtn:"ਯਾਦ ਦਿਵਾਉਣ ਭੇਜੋ",remOK:"✓ ਦਰਜ ਹੋ।",contactTag:"ਸੰਪਰਕ ਕਰੋ",contactH:"ਸਵਾਲ? ਸਾਨੂੰ ਲਿਖੋ — ਇੱਕ ਦਿਨ ਵਿੱਚ ਜਵਾਬ।",contactP:"ਤੁਰੰਤ ਲਈ DHCS (800) 541-5555 \'ਤੇ ਕਾਲ ਕਰੋ।",contactCta1:"ਈਮੇਲ ਕਰੋ",contactCta2:"DHCS: (800) 541-5555",ftAbout:"ਵਿਦਿਆਰਥੀਆਂ ਦੁਆਰਾ ਸਥਾਪਿਤ ਗੈਰ-ਮੁਨਾਫ਼ਾ ਸੰਸਥਾ।",ftExplore:"ਖੋਜੋ",ftLang:"ਭਾਸ਼ਾਵਾਂ",ftContact:"ਅਧਿਕਾਰਤ Medi-Cal",ftFraud:"⚠ ਨਵੀਨੀਕਰਨ ਮੁਫ਼ਤ। ਧੋਖਾਧੜੀ: (800) 822-6222.",ftDisc:"AccessMed California ਸੁਤੰਤਰ ਸੰਸਥਾ ਹੈ। ਸਿਰਫ਼ ਸਿੱਖਿਅਕ ਮਾਰਗਦਰਸ਼ਨ।",fab:"AccessBot ਨੂੰ ਪੁੱਛੋ",botStatus:"ਸਹਾਇਕ · ਆਨਲਾਈਨ",botDisc:"ਆਪਣੇ ਕੇਸ ਲਈ, (800) 541-5555 \'ਤੇ ਕਾਲ ਕਰੋ।"},
+  vi:{topHelp:'Đường dây Medi-Cal: <a href="tel:8005415555">(800) 541-5555</a> · miễn phí',navTools:"Công cụ",navLearn:"Tìm hiểu",navCounty:"Quận",navImpact:"Tác động",navBlog:"Blog",navHelp:"Trợ giúp",heroTag:"Tổ chức phi lợi nhuận California",heroH1:"Giữ Medi-Cal của bạn.<br><em>Bằng ngôn ngữ của bạn.</em>",heroSub:"Mỗi năm, cư dân California phải gia hạn Medi-Cal. Chúng tôi cung cấp hướng dẫn miễn phí bằng chín ngôn ngữ.",heroCta1:"Kiểm tra gia hạn",heroCta2:"Tìm quận của tôi",heroT1:"ngôn ngữ",heroT2:"quận CA",heroT3:"luôn miễn phí",hcTag:"Gia hạn 3 bước",hcH:"Hầu hết hoàn thành trực tuyến trong 30 phút.",hc1:"Chờ gói gia hạn (phong bì vàng)",hc2:"Thu thập: ID, chứng nhận thu nhập, địa chỉ",hc3:"Gửi trực tuyến tại BenefitsCal.com trước hạn",tilesTag:"Bắt đầu từ đâu",tilesH:"Công cụ đơn giản.",tilesLead:"Ba cách tập trung để nhận trợ giúp.",tile1H:"Kiểm tra gia hạn",tile1P:"Bảng câu hỏi ngắn tạo danh sách giấy tờ cá nhân hóa.",tile2H:"Tìm hiểu",tile2P:"Câu hỏi thường gặp bằng ngôn ngữ đơn giản.",tile3H:"Quận của tôi",tile3P:"Tất cả 58 quận California với số điện thoại đã xác minh.",tileGo:"Bắt đầu →",s1:"Người được hỗ trợ",s2:"Sự kiện nâng cao nhận thức",s3:"Ngôn ngữ",howTag:"Cách gia hạn hoạt động",howH:"Ba bước giữa bạn và bảo hiểm liên tục.",hw1H:"Chờ gói của bạn",hw1P:"Thông báo gia hạn đến qua thư trong phong bì vàng.",hw2H:"Thu thập giấy tờ",hw2P:"Thường: ID có ảnh, chứng nhận thu nhập, chứng nhận cư trú.",hw3H:"Nộp trước hạn",hw3P:"Nhanh nhất là trực tuyến tại BenefitsCal.com.",remTag:"Nhắc nhở miễn phí",remH:"Nhận nhắc nhở trước khi gia hạn.",remP:"Gửi email hoặc tin nhắn 30 ngày trước tháng gia hạn.",remPrivacy:"🔒 Thông tin chỉ dùng để gửi nhắc nhở.",remLbl1:"Liên hệ thế nào?",remLbl2:"Email hoặc điện thoại",remLbl3:"Tháng gia hạn",remBtn:"Gửi nhắc nhở",remOK:"✓ Đã đăng ký.",contactTag:"Liên hệ",contactH:"Câu hỏi? Gửi email — trả lời trong một ngày.",contactP:"Câu hỏi khẩn cấp, gọi DHCS (800) 541-5555.",contactCta1:"Gửi email",contactCta2:"Gọi DHCS: (800) 541-5555",ftAbout:"Tổ chức phi lợi nhuận do sinh viên thành lập.",ftExplore:"Khám phá",ftLang:"Ngôn ngữ",ftContact:"Medi-Cal chính thức",ftFraud:"⚠ Gia hạn luôn miễn phí. Báo cáo gian lận: (800) 822-6222.",ftDisc:"AccessMed California là tổ chức phi lợi nhuận độc lập. Chỉ cung cấp hướng dẫn giáo dục.",fab:"Hỏi AccessBot",botStatus:"Trợ lý · trực tuyến",botDisc:"Gọi (800) 541-5555 cho trường hợp của bạn."},
+  tl:{topHelp:'Medi-Cal helpline: <a href="tel:8005415555">(800) 541-5555</a> · libre',navTools:"Mga Gamit",navLearn:"Matuto",navCounty:"Aking County",navImpact:"Epekto",navBlog:"Blog",navHelp:"Kumuha ng Tulong",heroTag:"Isang organization sa California",heroH1:"Panatilihin ang inyong Medi-Cal.<br><em>Sa inyong wika.</em>",heroSub:"Bawat taon, kailangan ng mga residente ng California na i-renew ang Medi-Cal. Nagbibigay kami ng libreng gabay sa siyam na wika.",heroCta1:"I-check ang renewal",heroCta2:"Hanapin ang aking county",heroT1:"mga wika",heroT2:"mga county",heroT3:"laging libre",hcTag:"Renewal sa 3 hakbang",hcH:"Karamihan ay natatapos online sa 30 minuto.",hc1:"Antayin ang inyong renewal packet (dilaw na sobre)",hc2:"Tipunin: ID, patunay ng kita, tirahan",hc3:"I-submit online sa BenefitsCal.com bago ang deadline",tilesTag:"Saan magsisimula",tilesH:"Simpleng gamit.",tilesLead:"Tatlong paraan upang makatanggap ng tulong.",tile1H:"I-check ang Renewal",tile1P:"Maikling questionnaire ay bumubuo ng personalized na listahan.",tile2H:"Matuto",tile2P:"FAQ sa simpleng wika, glosaryo, at myth vs katotohanan.",tile3H:"Aking County",tile3P:"Lahat ng 58 county sa California na may nabe-verify na numero.",tileGo:"Magsimula →",s1:"Mga tinulungan",s2:"Awareness events",s3:"Mga wika",howTag:"Paano gumagana ang renewal",howH:"Tatlong hakbang sa pagitan ninyo at coverage.",hw1H:"Antayin ang inyong packet",hw1P:"Ang mga renewal notice ay dumadating sa dilaw na sobre.",hw2H:"Tipunin ang dokumento",hw2P:"Photo ID, patunay ng kita, paninirahan sa California.",hw3H:"I-submit bago ang deadline",hw3P:"Pinakamabilis ay online sa BenefitsCal.com.",remTag:"Libreng paalala",remH:"Makatanggap ng paalala bago ang renewal.",remP:"Magpapadala ng email o text 30 araw bago.",remPrivacy:"🔒 Ang inyong info ay para sa paalala lamang.",remLbl1:"Paano makipag-ugnayan?",remLbl2:"Email o telepono",remLbl3:"Buwan ng renewal",remBtn:"Padalhan ako",remOK:"✓ Naka-sign up.",contactTag:"Makipag-ugnayan",contactH:"Mga tanong? Mag-email — sagot sa isang araw.",contactP:"Para sa apurahan, tawagan ang DHCS (800) 541-5555.",contactCta1:"Mag-email",contactCta2:"Tawagan ang DHCS: (800) 541-5555",ftAbout:"Organization na itinatag ng mga estudyante.",ftExplore:"Galugarin",ftLang:"Mga Wika",ftContact:"Opisyal na Medi-Cal",ftFraud:"⚠ Ang renewal ay libre. I-report ang fraud: (800) 822-6222.",ftDisc:"Ang AccessMed California ay independienteng organization. Nagbibigay lamang ng libreng gabay.",fab:"Tanungin si AccessBot",botStatus:"Assistant · online",botDisc:"Tumawag sa (800) 541-5555 para sa inyong kaso."},
+  zh:{topHelp:'Medi-Cal 热线: <a href="tel:8005415555">(800) 541-5555</a> · 免费',navTools:"工具",navLearn:"了解",navCounty:"我的县",navImpact:"影响",navBlog:"博客",navHelp:"获取帮助",heroTag:"加州非营利组织",heroH1:"保留您的 Medi-Cal。<br><em>用您的语言。</em>",heroSub:"每年，加州居民必须续保 Medi-Cal。我们提供九种语言的免费简明指导。",heroCta1:"检查我的续保",heroCta2:"查找我的县",heroT1:"种语言",heroT2:"加州县",heroT3:"始终免费",hcTag:"三步续保",hcH:"大多数人在 30 分钟内在线完成。",hc1:"注意您的续保信件（黄色信封）",hc2:"准备文件：身份证、收入证明、地址",hc3:"在截止日期前在 BenefitsCal.com 提交",tilesTag:"从哪里开始",tilesH:"简单工具。",tilesLead:"三种专注的获取帮助方式。",tile1H:"续保检查",tile1P:"简短问卷根据您的情况生成文件清单。",tile2H:"了解",tile2P:"通俗语言常见问题、词汇表、误区对比。",tile3H:"我的县",tile3P:"加州全部 58 个县，附核实的电话号码。",tileGo:"开始 →",s1:"帮助过的人",s2:"意识活动",s3:"语言",howTag:"续保如何运作",howH:"您与持续保险之间的三个步骤。",hw1H:"等候您的信件",hw1P:"续保通知通过黄色信封邮寄。",hw2H:"准备文件",hw2P:"照片 ID、收入证明、加州居住证明。",hw3H:"截止日期前提交",hw3P:"最快是在 BenefitsCal.com 在线提交。",remTag:"免费提醒",remH:"续保前获得提醒。",remP:"续保月前 30 天发送邮件或短信。",remPrivacy:"🔒 您的信息仅用于提醒。",remLbl1:"如何联系？",remLbl2:"邮箱或电话",remLbl3:"续保月份",remBtn:"发送提醒",remOK:"✓ 已注册。",contactTag:"联系我们",contactH:"疑问？邮件联系 — 一个工作日回复。",contactP:"紧急问题，请拨打 DHCS (800) 541-5555。",contactCta1:"发邮件",contactCta2:"DHCS：(800) 541-5555",ftAbout:"学生创立的非营利组织。",ftExplore:"探索",ftLang:"语言",ftContact:"官方 Medi-Cal",ftFraud:"⚠ 续保始终免费。举报欺诈：(800) 822-6222。",ftDisc:"AccessMed California 是独立非营利组织。仅提供免费教育指导。",fab:"询问 AccessBot",botStatus:"助手 · 在线",botDisc:"您的情况请致电 (800) 541-5555。"},
+  ko:{topHelp:'Medi-Cal 상담: <a href="tel:8005415555">(800) 541-5555</a> · 무료',navTools:"도구",navLearn:"배우기",navCounty:"내 카운티",navImpact:"영향",navBlog:"블로그",navHelp:"도움받기",heroTag:"캘리포니아 비영리단체",heroH1:"Medi-Cal을 유지하세요.<br><em>당신의 언어로.</em>",heroSub:"매년 캘리포니아 주민은 Medi-Cal을 갱신해야 합니다. 9개 언어로 무료 간단한 안내를 제공합니다.",heroCta1:"내 갱신 확인",heroCta2:"내 카운티 찾기",heroT1:"개 언어",heroT2:"CA 카운티",heroT3:"항상 무료",hcTag:"3단계 갱신",hcH:"대부분 30분 이내에 온라인으로 완료.",hc1:"갱신 패킷을 기다리세요 (노란 봉투)",hc2:"서류 준비: 신분증, 소득 증명, 주소",hc3:"기한 전에 BenefitsCal.com에서 제출",tilesTag:"어디서 시작할까요",tilesH:"간단한 도구.",tilesLead:"도움받는 세 가지 방법.",tile1H:"갱신 확인",tile1P:"짧은 설문지가 서류 목록을 생성.",tile2H:"배우기",tile2P:"쉬운 언어 FAQ, 용어집.",tile3H:"내 카운티",tile3P:"검증된 전화번호가 있는 58개 카운티.",tileGo:"시작 →",s1:"도움받은 사람",s2:"인식 행사",s3:"언어",howTag:"갱신 작동 방식",howH:"당신과 지속적 보장 사이의 세 단계.",hw1H:"패킷을 기다리세요",hw1P:"노란 봉투로 우편 도착.",hw2H:"서류 준비",hw2P:"사진 신분증, 소득 증명, 캘리포니아 거주.",hw3H:"기한 전 제출",hw3P:"가장 빠른 방법은 BenefitsCal.com 온라인.",remTag:"무료 알림",remH:"갱신 전 알림 받기.",remP:"갱신 월 30일 전 이메일/문자 발송.",remPrivacy:"🔒 연락처는 알림 전용.",remLbl1:"연락 방법?",remLbl2:"이메일 또는 전화",remLbl3:"갱신 월",remBtn:"알림 보내기",remOK:"✓ 등록됨.",contactTag:"문의",contactH:"질문 있으신가요? 이메일 — 하루 이내 답변.",contactP:"긴급 시 DHCS (800) 541-5555.",contactCta1:"이메일",contactCta2:"DHCS: (800) 541-5555",ftAbout:"학생 설립 비영리단체.",ftExplore:"탐색",ftLang:"언어",ftContact:"공식 Medi-Cal",ftFraud:"⚠ 갱신은 무료. 사기 신고: (800) 822-6222.",ftDisc:"AccessMed California는 독립적 비영리단체. 교육 안내만 제공.",fab:"AccessBot에게 물어보기",botStatus:"어시스턴트 · 온라인",botDisc:"특정 사례는 (800) 541-5555로 전화."},
+  ar:{topHelp:'خط Medi-Cal: <a href="tel:8005415555">(800) 541-5555</a> · مجاناً',navTools:"الأدوات",navLearn:"تعلم",navCounty:"مقاطعتي",navImpact:"الأثر",navBlog:"المدونة",navHelp:"احصل على مساعدة",heroTag:"منظمة غير ربحية في كاليفورنيا",heroH1:"احتفظ بـ Medi-Cal.<br><em>بلغتك.</em>",heroSub:"كل عام، يجب على سكان كاليفورنيا تجديد Medi-Cal. نقدم إرشادات مجانية بتسع لغات.",heroCta1:"تحقق من تجديدي",heroCta2:"ابحث عن مقاطعتي",heroT1:"لغات",heroT2:"مقاطعات",heroT3:"دائماً مجاناً",hcTag:"التجديد في 3 خطوات",hcH:"معظم الناس ينهون التجديد في أقل من 30 دقيقة.",hc1:"انتظر طرد التجديد (مظروف أصفر)",hc2:"اجمع الوثائق: هوية، إثبات دخل، عنوان",hc3:"قدم عبر BenefitsCal.com قبل الموعد",tilesTag:"من أين تبدأ",tilesH:"أدوات بسيطة.",tilesLead:"ثلاث طرق للحصول على المساعدة.",tile1H:"فحص التجديد",tile1P:"استبيان قصير يُنشئ قائمة وثائق شخصية.",tile2H:"تعلم",tile2P:"أسئلة شائعة بلغة بسيطة.",tile3H:"مقاطعتي",tile3P:"جميع مقاطعات كاليفورنيا الـ 58 مع أرقام موثقة.",tileGo:"ابدأ ←",s1:"الأشخاص المساعدون",s2:"فعاليات التوعية",s3:"اللغات",howTag:"كيف يعمل التجديد",howH:"ثلاث خطوات بينك والتغطية المستمرة.",hw1H:"انتظر طردك",hw1P:"إشعارات التجديد بمظروف أصفر بالبريد.",hw2H:"اجمع الوثائق",hw2P:"هوية بصورة، إثبات دخل، إثبات إقامة.",hw3H:"قدم قبل الموعد",hw3P:"الأسرع عبر BenefitsCal.com.",remTag:"تذكير مجاني",remH:"احصل على تذكير قبل تجديدك.",remP:"سنرسل قبل 30 يوماً من شهر التجديد.",remPrivacy:"🔒 معلوماتك للتذكيرات فقط.",remLbl1:"كيف نتواصل؟",remLbl2:"البريد أو الهاتف",remLbl3:"شهر التجديد",remBtn:"أرسل لي",remOK:"✓ تم التسجيل.",contactTag:"اتصل بنا",contactH:"أسئلة؟ راسلنا — رد خلال يوم.",contactP:"للحالات العاجلة، اتصل بـ DHCS (800) 541-5555.",contactCta1:"راسلنا",contactCta2:"اتصل بـ DHCS: (800) 541-5555",ftAbout:"منظمة أسسها طلاب.",ftExplore:"استكشف",ftLang:"اللغات",ftContact:"Medi-Cal الرسمي",ftFraud:"⚠ التجديد مجاني. الاحتيال: (800) 822-6222.",ftDisc:"AccessMed California منظمة مستقلة. إرشادات تعليمية مجانية فقط.",fab:"اسأل AccessBot",botStatus:"مساعد · متصل",botDisc:"لحالتك، اتصل بـ (800) 541-5555."}
+};
+const LANG_LABELS={en:'English',es:'Español',hi:'हिन्दी',vi:'Tiếng Việt',pa:'ਪੰਜਾਬੀ',tl:'Tagalog',zh:'中文',ko:'한국어',ar:'العربية'};
+const baseText={};
+document.querySelectorAll('[data-i18n]').forEach(el=>{baseText[el.dataset.i18n]=el.innerHTML;});
+function setLang(l){
+  try{localStorage.setItem('amcLang',l);}catch(_){}
+  document.documentElement.lang=l;
+  document.documentElement.setAttribute('dir', l==='ar' ? 'rtl' : 'ltr');
+  document.body.setAttribute('dir', l==='ar' ? 'rtl' : 'ltr');
+  document.querySelectorAll('[data-i18n]').forEach(el=>{
+    const k=el.dataset.i18n;
+    el.innerHTML=(l==='en'?baseText[k]:(I18N[l]?.[k]||baseText[k]));
+  });
+  
+  document.querySelectorAll('#langBar button').forEach(b=>b.classList.toggle('active',b.dataset.lang===l));
+  
+}
+document.querySelectorAll('#langBar button').forEach(b=>b.addEventListener('click',()=>setLang(b.dataset.lang)));
+document.querySelectorAll('[data-set-lang]').forEach(a=>a.addEventListener('click',e=>{e.preventDefault();setLang(a.dataset.setLang);window.scrollTo({top:0,behavior:'smooth'});}));
+
+const revObs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');revObs.unobserve(e.target);}}),{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>revObs.observe(el));
+
+document.getElementById('remForm').addEventListener('submit',e=>{
+  if(location.hostname==='localhost'||location.hostname===''||location.protocol==='file:'){
+    e.preventDefault();
+    document.getElementById('remOK').classList.add('show');
+    setTimeout(()=>document.getElementById('remOK').classList.remove('show'),6000);
+  }
+});
+
+const KB=[
+  {k:['document','documents','paper','need','bring','upload','proof','papers'],
+   a:"For a Medi-Cal renewal you generally need:<br>• Photo ID or proof of identity<br>• Proof of income (pay stubs or benefit letters)<br>• Proof of California residence (a recent bill or lease)<br>• Documents for anything that changed this year<br><br>Every case can differ — for the exact list, use the <a href='tools.html#checker'>Renewal Check</a> or call your county."},
+  {k:['deadline','due','late','when','miss','expire'],
+   a:"Your renewal due date is printed on the notice your county mails you (typically in a yellow envelope) or shown in your BenefitsCal account. Submit on or before that date. If you already missed it, contact your county right away — DHCS materials describe a possible 90-day window to submit and have coverage reinstated."},
+  {k:['how','renew','submit','process','start'],
+   a:"You can renew four ways:<br>1. <b>Online</b> at BenefitsCal.com (fastest)<br>2. <b>By phone</b> with your county Medi-Cal office<br>3. <b>By mail</b> using your renewal packet<br>4. <b>In person</b> at your county office<br><br>Find your county's phone number in the <a href='tools.html#counties'>county lookup</a>."},
+  {k:['lost','stopped','lapsed','cancelled','canceled','terminated','ended','disenroll'],
+   a:"If your Medi-Cal stopped, contact your county immediately. DHCS materials describe a 90-day window where, if the loss was for procedural reasons and you still qualify, coverage may be reinstated without a new application. The sooner you act, the better."},
+  {k:['eligible','eligibility','qualify','income','limit'],
+   a:"Eligibility depends on income, household, age, and other factors. AccessMed doesn't decide eligibility — your county does. The best step is to apply or renew on BenefitsCal.com."},
+  {k:['county','office','local','near','address'],
+   a:"Medi-Cal is administered by your county. Use the <a href='tools.html#counties'>county lookup</a> to find your county's official phone number and office. You can also dial 2-1-1 for local social services."},
+  {k:['language','spanish','hindi','vietnamese','punjabi','korean','arabic','chinese','tagalog','translate'],
+   a:"This site is available in nine languages — English, Spanish, Chinese, Hindi, Punjabi, Vietnamese, Tagalog, Korean, and Arabic. Use the language menu at the top."},
+  {k:['cost','free','pay','price','money','fee','scam','fraud'],
+   a:"⚠ Renewing Medi-Cal is <b>always free</b>. AccessMed never charges. If someone asks you to pay to renew, it's a scam — report it to the Medi-Cal Fraud Hotline at (800) 822-6222."},
+  {k:['contact','help','human','person','call','talk','phone','email'],
+   a:"For questions about our work, email accessmedcalifornia@gmail.com. For official Medi-Cal help, call the DHCS helpline at (800) 541-5555 or your county office."},
+  {k:['immigration','immigrant','public charge','green card','status','undocumented'],
+   a:"Medi-Cal eligibility connected to immigration status changed in 2026. For current, personalized guidance — especially for mixed-status families — please contact your county eligibility worker or a qualified legal resource, since rules can vary by category and situation."},
+  {k:['pregnant','pregnancy','baby','newborn','postpartum'],
+   a:"DHCS materials state that pregnancy-related Medi-Cal continues through pregnancy and up to 12 months postpartum for those who remain eligible. For your specific case, contact your county."},
+  {k:['medicare','senior','65','dual','medi-medi'],
+   a:"If you have both Medicare and Medi-Cal, you're 'dual eligible.' You still need to renew Medi-Cal annually. See our <a href='blog.html#article-9'>blog post on Medi-Medi Plans</a> for details."},
+  {k:['address change','moved','move','new address','update'],
+   a:"If you've moved, update your address at BenefitsCal.com or by calling your county — otherwise renewal mail may not reach you. This is one of the most common reasons people lose coverage."}
+];
+const CHIPS=["What documents do I need?","How do I renew?","I lost my coverage","Is it really free?","Find my county"];
+const chatBody=document.getElementById('chatBody'),chipsEl=document.getElementById('chips');
+function botSay(html){const d=document.createElement('div');d.className='msg bot';d.innerHTML=html;chatBody.appendChild(d);chatBody.scrollTop=chatBody.scrollHeight;}
+function userSay(t){const d=document.createElement('div');d.className='msg user';d.textContent=t;chatBody.appendChild(d);chatBody.scrollTop=chatBody.scrollHeight;}
+function botThink(cb){const t=document.createElement('div');t.className='msg bot typing';t.innerHTML='<span></span><span></span><span></span>';chatBody.appendChild(t);chatBody.scrollTop=chatBody.scrollHeight;setTimeout(()=>{t.remove();cb();},650+Math.random()*450);}
+function answer(q){
+  const lq=q.toLowerCase();let best=null,score=0;
+  KB.forEach(it=>{let s=0;it.k.forEach(kw=>{if(lq.includes(kw))s++;});if(s>score){score=s;best=it;}});
+  if(best&&score>0)return best.a;
+  return "I can help with common Medi-Cal renewal questions — documents, deadlines, submitting, lost coverage, your county, and more. For your specific case, call your county Medi-Cal office or the DHCS helpline at (800) 541-5555. You can also email accessmedcalifornia@gmail.com.";
+}
+function handleUser(t){if(!t.trim())return;userSay(t);document.getElementById('chatInput').value='';botThink(()=>botSay(answer(t)));}
+function renderChips(){chipsEl.innerHTML='';CHIPS.forEach(c=>{const b=document.createElement('button');b.className='chip';b.textContent=c;b.addEventListener('click',()=>handleUser(c));chipsEl.appendChild(b);});}
+let chatStarted=false;
+function openChat(){
+  document.getElementById('chat').classList.add('open');
+  document.getElementById('fab').style.display='none';
+  if(!chatStarted){chatStarted=true;botThink(()=>{botSay("Hi, I'm <b>AccessBot</b>. I can answer common questions about Medi-Cal renewal. For decisions about your specific case, always confirm with your county or the DHCS helpline at (800) 541-5555. What would you like to know?");renderChips();});}
+}
+document.getElementById('fab').addEventListener('click',openChat);
+document.getElementById('chatX').addEventListener('click',()=>{document.getElementById('chat').classList.remove('open');document.getElementById('fab').style.display='flex';});
+document.getElementById('chatSend').addEventListener('click',()=>handleUser(document.getElementById('chatInput').value));
+document.getElementById('chatInput').addEventListener('keydown',e=>{if(e.key==='Enter')handleUser(e.target.value);});
+
+/* Hamburger */
+document.getElementById('hamBtn')?.addEventListener('click',e=>{e.stopPropagation();document.getElementById('mainNav').classList.toggle('open');});
+document.addEventListener('click',e=>{if(!e.target.closest('#mainNav')&&!e.target.closest('#hamBtn'))document.getElementById('mainNav')?.classList.remove('open');});
+
+/* URL-param language read (from other pages redirecting here) */
+try{const p=new URLSearchParams(location.search).get('lang');if(p&&I18N[p])setLang(p);else{const s=localStorage.getItem('amcLang');if(s&&I18N[s])setLang(s);}}catch(_){}
+</script>
+</body>
+</html>
