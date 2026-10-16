@@ -3,9 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
-<meta name="description" content="AccessMed California impact numbers, reported transparently — people reached, awareness events, languages, and community feedback.">
+<meta name="description" content="AccessMed California impact numbers, reported transparently, people reached, awareness events, languages, and community feedback.">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Impact & Feedback — AccessMed California</title>
+<title>Impact & Feedback. AccessMed California</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -273,12 +273,12 @@ footer .fabout{max-width:280px;font-size:13.5px;line-height:1.6;margin-top:12px}
       <h4>How we count</h4>
       <p>We want our numbers to mean something. Here's how each stat above is calculated.</p>
       <ul>
-        <li><b>People reached</b> — cumulative count of individuals we've spoken with directly at community awareness events, plus documented digital touchpoints.</li>
-        <li><b>Community awareness events</b> — every in-person outreach event where our team distributed multilingual Medi-Cal materials or answered renewal questions.</li>
-        <li><b>Found this site helpful</b> — percentage of respondents who rated the site "somewhat" or "very" helpful in the feedback survey below. Updates live as new responses come in.</li>
-        <li><b>Languages supported</b> — the languages this site is available in. Native-speaker review is ongoing.</li>
-        <li><b>AI assistant conversations</b> — distinct chat sessions where AccessBot was opened and at least one question was asked.</li>
-        <li><b>California counties covered</b> — verified contact information available for all 58 counties via the official DHCS County Contact List.</li>
+        <li><b>People reached</b>, cumulative count of individuals we've spoken with directly at community awareness events, plus documented digital touchpoints.</li>
+        <li><b>Community awareness events</b>, every in-person outreach event where our team distributed multilingual Medi-Cal materials or answered renewal questions.</li>
+        <li><b>Found this site helpful</b>, percentage of respondents who rated the site "somewhat" or "very" helpful in the feedback survey below. Updates live as new responses come in.</li>
+        <li><b>Languages supported</b>, the languages this site is available in. Native-speaker review is ongoing.</li>
+        <li><b>AI assistant conversations</b>, distinct chat sessions where AccessBot was opened and at least one question was asked.</li>
+        <li><b>California counties covered</b>, verified contact information available for all 58 counties via the official DHCS County Contact List.</li>
       </ul>
     </div>
   </div>
@@ -297,8 +297,7 @@ footer .fabout{max-width:280px;font-size:13.5px;line-height:1.6;margin-top:12px}
         <div><b>Quick feedback</b><span>Anonymous · optional</span></div>
       </div>
       <div class="fb-body">
-        <form name="site-feedback" method="POST" data-netlify="true" netlify-honeypot="bot-field" id="fbForm">
-          <input type="hidden" name="form-name" value="site-feedback">
+        <form id="fbForm" novalidate>
           <p style="display:none"><label>Don't fill this: <input name="bot-field"></label></p>
 
           <label>What brought you here today?</label>
@@ -404,13 +403,38 @@ footer .fabout{max-width:280px;font-size:13.5px;line-height:1.6;margin-top:12px}
 const revObs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');revObs.unobserve(e.target);}}),{threshold:.12});
 document.querySelectorAll('.reveal').forEach(el=>revObs.observe(el));
 
-document.getElementById('fbForm').addEventListener('submit',e=>{
-  // On Netlify deploy, form submits normally. For local preview, show success state.
-  if(location.hostname==='localhost'||location.hostname===''||location.protocol==='file:'){
-    e.preventDefault();
-    document.getElementById('fbOK').classList.add('show');
-    setTimeout(()=>document.getElementById('fbOK').classList.remove('show'),8000);
-  }
+/* Feedback submission, submits via FormSubmit.co AJAX.
+   Delivers submissions to accessmedcalifornia@gmail.com. Works on
+   GitHub Pages, Netlify, locally, anywhere. First submission triggers
+   a one-time FormSubmit verification email, click the link to activate. */
+document.getElementById('fbForm').addEventListener('submit',function(e){
+  e.preventDefault();
+  const f=e.target;
+  const btn=f.querySelector('button[type=submit]');
+  const ok=document.getElementById('fbOK');
+  const get=(n)=>{const el=f.querySelector(`[name="${n}"]:checked`)||f.querySelector(`[name="${n}"]`);return el?(el.value||'(not answered)'):'(not answered)';};
+  btn.disabled=true;btn.textContent='Sending…';
+  fetch('https://formsubmit.co/ajax/accessmedcalifornia@gmail.com',{
+    method:'POST',
+    headers:{'Content-Type':'application/json','Accept':'application/json'},
+    body:JSON.stringify({
+      _subject:'Site feedback submission',
+      _template:'table',
+      _captcha:'false',
+      'What brought you here':get('reason'),
+      'Was the site helpful':get('helpful'),
+      'Did you use AccessBot':get('ai'),
+      'Your next step':get('next'),
+      'Your county':f.querySelector('#fbCounty').value||'(not shared)',
+      'Additional comments':f.querySelector('#fbComment').value.trim()||'(none)'
+    })
+  }).then(r=>r.json()).then(data=>{
+    ok.textContent='✓ Thank you. Your feedback was recorded and will contribute to the numbers above.';
+    ok.classList.add('show');f.reset();btn.disabled=false;btn.textContent='Submit feedback';
+  }).catch(err=>{
+    ok.textContent='Sorry, there was a problem submitting. Please email accessmedcalifornia@gmail.com directly.';
+    ok.classList.add('show');btn.disabled=false;btn.textContent='Submit feedback';
+  });
 });
 
 /* Hamburger */
